@@ -95,10 +95,6 @@ Cada cliente adquiere la misma potencia de desarrollo estructural pero vestida c
   * *En la gestión:* visible en la pestaña del navegador mientras el hostelero trabaja con el editor portable `.exe`.  
   * *En la mesa:* visible de forma elegante en la pestaña del navegador móvil del cliente al escanear el QR.
 
- ![][image9]     ![][image10] 
-
-|  |  |  |  |
-| :---- | :---- | :---- | :---- |
 
 ### 
 
@@ -110,9 +106,12 @@ Concepto, diseño de interfaz (UI/UX), desarrollo del ecosistema y arquitectura 
 
 **Contacto y Portfolio Profesional:**
 
-	**🌐 Portfolio:**	[manolorecio.github.io/Manolo-Recio-Portfolio/](https://manolorecio.github.io/Manolo-Recio-Portfolio/)  
-	**✉ Email:**	[manoloreciodesign@gmail.com](mailto:manoloreciodesign@gmail.com)  
-	**📞 Teléfono:** 	[633 555 950](tel:+34633555950)
+### [Manolo Recio | Senior Graphic & Visual Designer & Scenography Developer](https://manolorecio.github.io/Manolo-Recio-Portfolio/)
+
+**🌐 Portfolio:** [manolorecio.github.io/Manolo-Recio-Portfolio/](https://manolorecio.github.io/Manolo-Recio-Portfolio/)  
+**✉ Email:** [manoloreciodesign@gmail.com](mailto:manoloreciodesign@gmail.com)  
+**📞 Teléfono:** [+34 633 555 950](tel:+34633555950)
+
 
 ---
 
