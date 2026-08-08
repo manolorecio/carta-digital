@@ -1,21 +1,15 @@
 ***
 
-# DIMEDI: Editor de Carta Digital Portable y Autónomo 🍽️✨
-
-[![Demo Activa](https://img.shields.io/badge/DEMO-ACTIVA-gold?style=for-the-badge&logo=github)](https://manolorecio.github.io/carta-digital/)
-[![QR Code Imprimible](https://img.shields.io/badge/QR_Vectorial-qr--code.pdf-red?style=for-the-badge&logo=adobe-acrobat)](./qr-code.pdf)
-[![Licencia](https://img.shields.io/badge/Propiedad-Perpetua-blue?style=for-the-badge)](https://manolorecio.github.io/carta-digital/)
-[![Normativa](https://img.shields.io/badge/Cumplimiento-R.D.%20126%2F2015-green?style=for-the-badge)](https://manolorecio.github.io/carta-digital/)
+# DIMEDI: Editor de Carta Digital Portable y Autónomo
 
 > **El fin del "Secuestro Digital" en la hostelería.** Una herramienta standalone de pago único que devuelve el control absoluto, la soberanía de datos y la libertad financiera al hostelero. **Sin cuotas mensuales, sin intermediarios y sin comisiones.**
 
 ---
 
 ## 🌐 Demo en Vivo y Acceso QR
-
 Prueba la experiencia real que tendrá el comensal accediendo directamente desde tu smartphone o escaneando el código QR oficial del proyecto:
+### 👉 **[Demo de Carta Digital · Vista de Comensal](https://manolorecio.github.io/carta-digital/)**
 
-### 👉 **[https://manolorecio.github.io/carta-digital/](https://manolorecio.github.io/carta-digital/)**
 
 <p align="center">
   <a href="https://manolorecio.github.io/carta-digital/" target="_blank">
@@ -23,13 +17,11 @@ Prueba la experiencia real que tendrá el comensal accediendo directamente desde
   </a>
 </p>
 
-💡 **¿Quieres imprimirlo para tus mesas?** En este repositorio tienes disponible el archivo de alta fidelidad **[`qr-code.pdf`](./qr-code.pdf)**. Al ser un formato vectorial nativo, puedes enviarlo directamente a imprenta para grabados en madera, metacrilato o cartelería sin que pierda un ápice de nitidez. 
-
 ---
 
-## ❖ ¿Qué es DIMEDI?
+## ❖ ¿Qué es DIMEDI (Editor Carta Digital Portable)?
 
-**DIMEDI** es el primer **Editor de Carta Digital Standalone y Portable** diseñado para el sector de la restauración (restaurantes, tabernas, bares, cafeterías y hoteles). 
+**DIMEDI** es el primer **Editor de Carta Digital Standalone y Portable** diseñado para el sector de la restauración (restaurantes, tabernas, bares, cafeterías, hoteles, chiringuitos, tascas, mesones, gastrobares, pizzerías, hamburgueserías, heladerías, pastelerías, panaderías, food trucks, cáterings, bodegas, beach clubs y salones de celebraciones). 
 
 A diferencia de las soluciones SaaS (Software de Alquiler) que cobran suscripciones perpetuas y exigen conexión constante a servidores de terceros, **DIMEDI se ejecuta localmente** (incluso desde un pendrive). El software edita de manera 100% offline y exporta una **Single Page Application (SPA) HTML5** ultra-ligera, autónoma y auto-ejecutable para el comensal.
 
@@ -61,7 +53,7 @@ No es un simple contraste de fondo. Es una suite de accesibilidad activa integra
 
 ### 5. 🔊 La Carta que "Habla" (Web Speech API)
 * **Lectura de Voz Fonética Bilingüe:** Un motor que realiza la lectura del menú de forma natural. Lee el plato en español y seguidamente en inglés de manera secuencial.
-* **Normalización Fonética Inteligente:** Traduce números de precio a lenguaje hablado (ej. *"19,00 €"* \\(\rightarrow\\) *"diecinueve euros"* / *"nineteen euros"*) y normaliza la pronunciación de fracciones (*"1/2"* \\(\rightarrow\\) *"media ración de"*) y anglicismos.
+* **Normalización Fonética Inteligente:** Traduce números de precio a lenguaje hablado (ej. *"19,00 €") *"diecinueve euros"* / *"nineteen euros"*) y normaliza la pronunciación de fracciones (*"1/2") (*"media ración de"*) y anglicismos.
 
 ### 6. 🗣️ Asesor Gastronómico y Enfoque de Entrada Unificado
 * **Entrada unificada mediante barra `" / "`:** Olvídate de duplicar formularios o mantener menús paralelos. Escribe *"Patatas / French Fries"* en un solo campo; el sistema procesará la barra diagonal y maquetará ambos idiomas con una jerarquía cromática elegante de forma automática.
@@ -74,11 +66,11 @@ No es un simple contraste de fondo. Es una suite de accesibilidad activa integra
 Al descomprimir tu software **DIMEDI** en tu equipo o en un pendrive, obtendrás la siguiente estructura limpia de archivos y carpetas:
 
 ```bash
-DIMEDI-Editor-Portable/
+DIMEDI-Tu-Establecimiento-Editor-Portable/
 ├── Training-Tasca-Editor.exe     # Ejecutable principal local para Windows (sin instalación)
 ├── launcher.cjs                  # Lanzador multiplataforma para macOS o Linux (requiere Node.js)
 ├── INSTRUCCIONES.md              # Manual técnico paso a paso de uso rápido integrado
-├── qr-code.pdf                   # Archivo vectorial de imprenta para el código QR de las mesas
+├── qr-code.svg                   # Archivo vectorial QR de las mesas
 ├── VENTAJAS_Y_SOLUCIONES.md      # Dossier comercial y de ventajas operativas del sistema
 ├── LEEME.txt                     # Resumen de inicio rápido
 ├── dist/                         # Interfaz visual y estilos nativos del editor
@@ -96,9 +88,9 @@ DIMEDI-Editor-Portable/
 
 El flujo para actualizar la carta a tus comensales se resume en un proceso ágil de 3 pasos:
 
-```
-[ EDITOR PORTABLE (.EXE) ] ──(Un Clic)──> [ EXPORTA HTML (.HTML) ] ──(Arrastrar)──> [ TU SERVIDOR / GITHUB ]
-```
+
+
+
 
 1. **Edita:** Abre tu programa local `.exe`. Actualiza precios, añade suplementos o marca un plato que se ha agotado en cocina con el botón **"AGOTADO"**.
 2. **Exporta:** Haz clic en **"Exportar HTML"** en la barra central. El sistema compilará y guardará tu archivo unificado y optimizado en la subcarpeta `client-data/exports/`.
@@ -118,7 +110,7 @@ Concepto, diseño de interfaz de usuario y de experiencia (UI/UX), desarrollo de
 
 * **Sitio Web & Portfolio:** [manolorecio.github.io/Manolo-Recio-Portfolio/](https://manolorecio.github.io/Manolo-Recio-Portfolio/)
 * **Email de Contacto:** [manoloreciodesign@gmail.com](mailto:manoloreciodesign@gmail.com)
-* **Teléfono:** [+34 633 555 950](tel:+34633555950)
+* **Teléfono:** <a href="tel:+34633555950">633 555 950</a>
 
 ***
 
