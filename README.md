@@ -19,7 +19,7 @@ Prueba la experiencia real que tendrá el comensal accediendo directamente desde
 
 <p align="center">
   <a href="https://manolorecio.github.io/carta-digital/" target="_blank">
-    <img src="https://raw.githubusercontent.com/manolorecio/carta-digital/main/qr-code.svg" width="280" alt="Código QR de la Carta Digital DIMEDI" style="border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
+    <img src="https://raw.githubusercontent.com/manolorecio/carta-digital/main/qr-code.pdf" width="280" alt="Código QR de la Carta Digital DIMEDI" style="border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
   </a>
 </p>
 
