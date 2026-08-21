@@ -3088,8 +3088,8 @@
             const tomorrowDay = (currentDay + 1) % 7;
             if (days.includes(tomorrowDay)) {
               return {
-                es: catEs + ", disponible mañana a las " + startStr,
-                en: catEn + ", available tomorrow at " + startStr
+                es: catEs + ", Disponible mañana a las " + startStr,
+                en: catEn + ", Available tomorrow at " + startStr
               };
             }
 
@@ -3111,8 +3111,8 @@
             const nextDayNameEn = dMapEn[nextDayNum];
 
             return {
-              es: catEs + ", disponible el " + nextDayNameEs + " a las " + startStr,
-              en: catEn + ", available on " + nextDayNameEn + " at " + startStr
+              es: catEs + ", Disponible el " + nextDayNameEs + " a las " + startStr,
+              en: catEn + ", Available on " + nextDayNameEn + " at " + startStr
             };
           } catch (e) {
             console.error("Error in getNextOpeningText:", e);
@@ -4198,13 +4198,13 @@
 
                     if (scheduleState.status === 'open-normal') {
                         icon = '🟢';
-                        textEs = 'Abierto de ' + scheduleState.startTimeStr + ' a ' + scheduleState.endTimeStr;
-                        textEn = 'Open from ' + scheduleState.startTimeStr + ' to ' + scheduleState.endTimeStr;
+                        textEs = 'Disponible de ' + scheduleState.startTimeStr + ' a ' + scheduleState.endTimeStr;
+                        textEn = 'Available from ' + scheduleState.startTimeStr + ' to ' + scheduleState.endTimeStr;
                     } else if (scheduleState.status === 'closing-soon') {
                         icon = '🚨';
                         isUrgent = true;
-                        textEs = '¡Atención! Quedan ' + scheduleState.remainingMinutes + ' min (Abierto de ' + scheduleState.startTimeStr + ' a ' + scheduleState.endTimeStr + ')';
-                        textEn = 'Attention! ' + scheduleState.remainingMinutes + ' min left (Open from ' + scheduleState.startTimeStr + ' to ' + scheduleState.endTimeStr + ')';
+                        textEs = '¡Atención! Quedan ' + scheduleState.remainingMinutes + ' min (Disponible de ' + scheduleState.startTimeStr + ' a ' + scheduleState.endTimeStr + ')';
+                        textEn = 'Attention! ' + scheduleState.remainingMinutes + ' min left (Available from ' + scheduleState.startTimeStr + ' to ' + scheduleState.endTimeStr + ')';
                     } else if (scheduleState.status === 'opening-soon') {
                         icon = '⏳';
                         textEs = 'Disponible a las ' + scheduleState.startTimeStr;
