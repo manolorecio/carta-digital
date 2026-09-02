@@ -332,7 +332,7 @@ El sistema incorpora funcionalidades orientadas a la accesibilidad y la informac
 
 # 🚀 Filosofía del Proyecto
 
- nace con una premisa sencilla:
+ Nace con una premisa sencilla:
 
 > **El restaurante debe ser propietario de su carta digital, no un rehén de la plataforma que la aloja.**
 
@@ -343,7 +343,7 @@ El modelo pretende eliminar la dependencia tecnológica innecesaria y proporcion
 | **Tus datos** | **Tus contenidos** | **Tu infraestructura** | **Sin cuotas recurrentes** |
 
 ---
-
+#
 # 📜 Licencia, Dirección de Arte y Autoría
 
 **© 2026 Manolo Recio · Todos los derechos reservados.**
@@ -370,38 +370,15 @@ Concepto, diseño de interfaz de usuario y experiencia (**UI/UX**), desarrollo d
 
 Ofrece una experiencia interactiva de autoría que respete su privacidad, cuide su salud alimentaria y libere para siempre a tu establecimiento de las cuotas abusivas de suscripción.
 
-### ****
-
-**Tu carta. · Tus datos. · Tu servidor. · Tu libertad.**
-
+##
+<p align="center">
+Tu carta. · Tus datos. · Tu servidor. · Tu libertad.
 </p>
 
 ---
 
 <p align="center">
-
-**© 2026 Manolo Recio · **
-
+  <a href="https://manolorecio.github.io/Manolo-Recio-Portfolio/" target="_blank" rel="noopener noreferrer">
+    <img src="./manolo-recio-logo.png" width="600" alt="Manolo Recio — Senior Graphic & Visual Designer, Scenography Developer & AI Creative Developer">
+  </a>
 </p>
-
-
----
-
-## 📜 Licencia, Dirección de Arte y Autoría
-
-**© 2026 Manolo Recio | Todos los derechos reservados.**
-
-Concepto, diseño de interfaz de usuario y de experiencia (UI/UX), desarrollo de ingeniería web de alto rendimiento y arquitectura de marca creados íntegramente por:
-
-**Manolo Recio** | *Senior Graphic & Visual Designer, Scenography Developer & AI Creative Developer*
-
-* **Sitio Web & Portfolio:** [manolorecio.github.io/Manolo-Recio-Portfolio/](https://manolorecio.github.io/Manolo-Recio-Portfolio/)
-* **Email de Contacto:** [manoloreciodesign@gmail.com](mailto:manoloreciodesign@gmail.com)
-* **Teléfono:** <a href="tel:+34633555950">633 555 950</a>
-
-***
-
-*No entregues a tus comensales un PDF frío, incómodo e inaccesible. Ofrece una experiencia interactiva de autoría que respete su privacidad, cuide su salud alimentaria y libere para siempre a tu establecimiento de las cuotas abusivas de suscripción.*
-
-***
-
