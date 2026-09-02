@@ -446,7 +446,7 @@ Concepto, diseño de interfaz de usuario y experiencia (**UI/UX**), desarrollo d
 *Senior Graphic & Visual Designer · Scenography Developer · AI Creative Developer*
 
 [![Portfolio](https://img.shields.io/badge/PORTFOLIO-manolorecio.github.io-000000?style=for-the-badge&logo=googlechrome&logoColor=white)](https://manolorecio.github.io/Manolo-Recio-Portfolio/)
-[![Email](https://img.shields.io/badge/EMAIL-Contacto-000000?style=for-the-badge&logo=gmail&logoColor=white)](mailto:manoloreciodesign@gmail.com)
+[![Email](https://img.shields.io/badge/EMAIL-manoloreciodesign@gmail.com-000000?style=for-the-badge&logo=gmail&logoColor=white)](mailto:manoloreciodesign@gmail.com)
 [![Teléfono](https://img.shields.io/badge/TEL-633%20555%20950-000000?style=for-the-badge&logo=whatsapp&logoColor=white)](tel:+34633555950)
 
 </div>
