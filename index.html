@@ -999,17 +999,17 @@
       border-color: color-mix(in srgb, var(--secondary-gold, var(--gold, #fef08a)) 80%, #ffffff 20%) !important;
     }
 
-    /* 3. Visual Accessibility Button (Text Paragraph / Soft Harmony & Pulse) */
+    /* 3. Visual Accessibility Button (WCAG AAA Guaranteed Contrast & Pulse) */
     #accessibility-trigger {
-      background-color: color-mix(in srgb, var(--dark, #12160e) 88%, var(--text-paragraph, #e9e478) 12%) !important;
-      color: var(--text-paragraph, #e9e478) !important;
-      border: 2px solid var(--text-paragraph, #e9e478) !important;
+      background-color: color-mix(in srgb, var(--dark, #12160e) 88%, #fef08a 12%) !important;
+      color: var(--gold, #fef08a) !important;
+      border: 2px solid var(--gold, #fef08a) !important;
       animation: ctaPulseAccessibilityDark 2.6s infinite ease-in-out !important;
       animation-delay: 1.7s !important;
     }
     #accessibility-trigger:hover {
-      box-shadow: 0 6px 24px rgba(0,0,0,0.6), 0 0 22px color-mix(in srgb, var(--text-paragraph, #e9e478), transparent 30%) !important;
-      border-color: color-mix(in srgb, var(--text-paragraph, #e9e478) 80%, #ffffff 20%) !important;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.6), 0 0 22px color-mix(in srgb, #fef08a, transparent 30%) !important;
+      border-color: #ffffff !important;
     }
 
     /* 4. Virtual Order Trigger Button (Gold Order Harmony & Pulse) */
@@ -1070,15 +1070,15 @@
     body.light-mode #accessibility-trigger,
     [data-theme="light"] #accessibility-trigger {
       background-color: #ffffff !important;
-      color: var(--text-paragraph, #78350f) !important;
-      border: 2px solid var(--text-paragraph, #78350f) !important;
+      color: #78350f !important;
+      border: 2px solid #78350f !important;
       animation: ctaPulseAccessibilityLight 2.6s infinite ease-in-out !important;
       animation-delay: 1.7s !important;
     }
     body.light-mode #accessibility-trigger:hover,
     [data-theme="light"] #accessibility-trigger:hover {
-      box-shadow: 0 6px 20px rgba(0,0,0,0.18), 0 0 18px color-mix(in srgb, var(--text-paragraph, #78350f), transparent 50%) !important;
-      background-color: color-mix(in srgb, #ffffff 92%, var(--text-paragraph, #78350f) 8%) !important;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.18), 0 0 18px rgba(120, 53, 15, 0.4) !important;
+      background-color: #fffbeb !important;
     }
 
     body.light-mode #virtual-order-trigger,
@@ -1345,6 +1345,8 @@
     /* Headers inside sidebars */
     #allergen-sidebar .p-5,
     #accessibility-sidebar .p-5,
+    #accessibility-sidebar-header,
+    #accessibility-sidebar .liquid-glass-header,
     #virtual-order-sidebar .p-5,
     .liquid-glass-header {
       background-color: color-mix(in srgb, var(--dark, #12160e), black 20%) !important;
@@ -1352,60 +1354,167 @@
     }
     body.light-mode #allergen-sidebar .p-5,
     body.light-mode #accessibility-sidebar .p-5,
+    body.light-mode #accessibility-sidebar-header,
+    body.light-mode #accessibility-sidebar .liquid-glass-header,
     body.light-mode #virtual-order-sidebar .p-5,
     body.light-mode .liquid-glass-header,
     [data-theme="light"] #allergen-sidebar .p-5,
     [data-theme="light"] #accessibility-sidebar .p-5,
+    [data-theme="light"] #accessibility-sidebar-header,
+    [data-theme="light"] #accessibility-sidebar .liquid-glass-header,
     [data-theme="light"] #virtual-order-sidebar .p-5,
     [data-theme="light"] .liquid-glass-header {
-      background-color: #f8fafc !important;
-      border-bottom: 1px solid #cbd5e1 !important;
+      background-color: color-mix(in srgb, var(--client-modal-bg, #ffffff) 94%, var(--gold, #9a6700) 6%) !important;
+      border-bottom: 1px solid color-mix(in srgb, var(--gold, #9a6700), transparent 75%) !important;
     }
 
     /* Footers inside sidebars */
-    #virtual-order-sidebar .drawer-footer-box {
-      background-color: color-mix(in srgb, var(--dark, #12160e), black 20%) !important;
-      border-top: 1px solid color-mix(in srgb, var(--gold, #d4af37), transparent 75%) !important;
+    #virtual-order-sidebar .drawer-footer-box,
+    #allergen-sidebar .drawer-footer-box,
+    #accessibility-sidebar .drawer-footer-box,
+    #accessibility-sidebar-footer {
+      background-color: color-mix(in srgb, var(--dark, #12160e), black 25%) !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+    }
+    #accessibility-sidebar-footer span:first-child {
+      color: #f1f5f9 !important;
+      font-weight: 700 !important;
+    }
+    #accessibility-sidebar-footer span:last-child {
+      color: #fef08a !important;
+      font-weight: 700 !important;
     }
     body.light-mode #virtual-order-sidebar .drawer-footer-box,
-    [data-theme="light"] #virtual-order-sidebar .drawer-footer-box {
-      background-color: #f8fafc !important;
-      border-top: 1px solid #cbd5e1 !important;
+    body.light-mode #allergen-sidebar .drawer-footer-box,
+    body.light-mode #accessibility-sidebar .drawer-footer-box,
+    body.light-mode #accessibility-sidebar-footer,
+    [data-theme="light"] #virtual-order-sidebar .drawer-footer-box,
+    [data-theme="light"] #allergen-sidebar .drawer-footer-box,
+    [data-theme="light"] #accessibility-sidebar .drawer-footer-box,
+    [data-theme="light"] #accessibility-sidebar-footer {
+      background-color: color-mix(in srgb, var(--client-modal-bg, #ffffff) 94%, var(--gold, #9a6700) 6%) !important;
+      border-top: 1px solid #e2e8f0 !important;
+    }
+    body.light-mode #accessibility-sidebar-footer span:first-child,
+    [data-theme="light"] #accessibility-sidebar-footer span:first-child {
+      color: #0f172a !important;
+      font-weight: 800 !important;
+    }
+    body.light-mode #accessibility-sidebar-footer span:last-child,
+    [data-theme="light"] #accessibility-sidebar-footer span:last-child {
+      color: #78350f !important;
+      font-weight: 700 !important;
     }
 
-    /* Titles inside header */
+    /* Subtitles inside header */
     .drawer-subtitle {
       color: var(--gold, #d4af37) !important;
       font-weight: 800 !important;
     }
+    #accessibility-sidebar .drawer-subtitle {
+      color: #fef08a !important;
+      font-weight: 800 !important;
+    }
     body.light-mode .drawer-subtitle,
     [data-theme="light"] .drawer-subtitle {
-      color: #854d0e !important;
+      color: var(--secondary-gold, #854d0e) !important;
+    }
+    body.light-mode #accessibility-sidebar .drawer-subtitle,
+    [data-theme="light"] #accessibility-sidebar .drawer-subtitle {
+      color: #78350f !important;
+      font-weight: 800 !important;
     }
 
+    /* Titles inside header */
     .drawer-title {
       color: var(--text, #ffffff) !important;
       font-weight: 900 !important;
     }
+    #accessibility-sidebar .drawer-title {
+      color: #ffffff !important;
+      font-weight: 900 !important;
+    }
     body.light-mode .drawer-title,
     [data-theme="light"] .drawer-title {
+      color: var(--text, #0f172a) !important;
+    }
+    body.light-mode #accessibility-sidebar .drawer-title,
+    [data-theme="light"] #accessibility-sidebar .drawer-title {
       color: #0f172a !important;
+      font-weight: 900 !important;
+    }
+    #accessibility-drawer-title svg {
+      color: #fef08a !important;
+    }
+    body.light-mode #accessibility-drawer-title svg,
+    [data-theme="light"] #accessibility-drawer-title svg {
+      color: #78350f !important;
     }
 
     #allergen-sidebar h4,
-    #accessibility-sidebar h4,
     #virtual-order-sidebar h4.drawer-en-subtitle {
       color: var(--text-paragraph, #e9e478) !important;
       opacity: 1 !important;
       font-weight: 700 !important;
     }
+    #accessibility-sidebar h4,
+    #accessibility-drawer-en-subtitle {
+      color: #f1f5f9 !important;
+      opacity: 1 !important;
+      font-weight: 700 !important;
+    }
     body.light-mode #allergen-sidebar h4,
-    body.light-mode #accessibility-sidebar h4,
     body.light-mode #virtual-order-sidebar h4.drawer-en-subtitle,
     [data-theme="light"] #allergen-sidebar h4,
-    [data-theme="light"] #accessibility-sidebar h4,
     [data-theme="light"] #virtual-order-sidebar h4.drawer-en-subtitle {
-      color: #334155 !important;
+      color: var(--client-text-paragraph-es, #334155) !important;
+    }
+    body.light-mode #accessibility-sidebar h4,
+    body.light-mode #accessibility-drawer-en-subtitle,
+    [data-theme="light"] #accessibility-sidebar h4,
+    [data-theme="light"] #accessibility-drawer-en-subtitle {
+      color: #0f172a !important;
+      font-weight: 800 !important;
+    }
+
+    /* Accessibility Drawer Description text - WCAG AAA compliant in light and dark mode */
+    #accessibility-sidebar .drawer-description {
+      color: #f8fafc !important;
+    }
+    #accessibility-sidebar .drawer-description span {
+      color: #fef08a !important;
+      font-weight: 700 !important;
+    }
+    body.light-mode #accessibility-sidebar .drawer-description,
+    [data-theme="light"] #accessibility-sidebar .drawer-description {
+      color: #1e293b !important;
+    }
+    body.light-mode #accessibility-sidebar .drawer-description span,
+    [data-theme="light"] #accessibility-sidebar .drawer-description span {
+      color: #78350f !important;
+      font-weight: 700 !important;
+    }
+
+    /* Accessibility Close Button */
+    #accessibility-sidebar .drawer-close-btn {
+      background-color: rgba(255, 255, 255, 0.1) !important;
+      border-color: rgba(255, 255, 255, 0.3) !important;
+      color: #ffffff !important;
+    }
+    #accessibility-sidebar .drawer-close-btn:hover {
+      background-color: rgba(255, 255, 255, 0.2) !important;
+    }
+    body.light-mode #accessibility-sidebar .drawer-close-btn,
+    [data-theme="light"] #accessibility-sidebar .drawer-close-btn {
+      background-color: #f8fafc !important;
+      border: 1px solid #cbd5e1 !important;
+      color: #0f172a !important;
+    }
+    body.light-mode #accessibility-sidebar .drawer-close-btn:hover,
+    [data-theme="light"] #accessibility-sidebar .drawer-close-btn:hover {
+      background-color: #f1f5f9 !important;
+      border-color: #94a3b8 !important;
+      color: #000000 !important;
     }
 
     /* Light mode overrides for Virtual Order Cards */
@@ -2020,32 +2129,49 @@
 
     /* Accessibility cards / boxes in light mode */
     #accessibility-sidebar .bg-black/30,
-    [data-theme="light"] #accessibility-sidebar .bg-black/30 {
-      background-color: #f1f5f9 !important;
-      border-color: #cbd5e1 !important;
+    #accessibility-sidebar .bg-black/40,
+    [data-theme="light"] #accessibility-sidebar .bg-black/30,
+    [data-theme="light"] #accessibility-sidebar .bg-black/40,
+    body.light-mode #accessibility-sidebar .bg-black/30,
+    body.light-mode #accessibility-sidebar .bg-black/40 {
+      background-color: #ffffff !important;
+      border-color: color-mix(in srgb, var(--gold, #9a6700), transparent 75%) !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
     }
 
     /* Dark mode cards contrast fix */
     body:not(.light-mode) #accessibility-sidebar .bg-black/30,
-    [data-theme="dark"] #accessibility-sidebar .bg-black/30 {
-      background-color: rgba(255, 255, 255, 0.05) !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    body:not(.light-mode) #accessibility-sidebar .bg-black/40,
+    [data-theme="dark"] #accessibility-sidebar .bg-black/30,
+    [data-theme="dark"] #accessibility-sidebar .bg-black/40 {
+      background-color: rgba(0, 0, 0, 0.4) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
     }
 
     body.light-mode #accessibility-sidebar label,
     body.light-mode #accessibility-sidebar span.text-white,
     [data-theme="light"] #accessibility-sidebar label,
     [data-theme="light"] #accessibility-sidebar span.text-white {
-      color: #0f172a !important;
+      color: var(--text, #0f172a) !important;
+    }
+
+    body.light-mode #accessibility-sidebar span.text-gold-themed,
+    [data-theme="light"] #accessibility-sidebar span.text-gold-themed {
+      color: var(--secondary-gold, #854d0e) !important;
     }
 
     body.light-mode #accessibility-sidebar span.text-white/40,
     body.light-mode #accessibility-sidebar span.text-white/60,
+    body.light-mode #accessibility-sidebar span.text-white/70,
     body.light-mode #accessibility-sidebar span.text-paragraph-themed/60,
+    body.light-mode #accessibility-sidebar .font-mono.opacity-60,
     [data-theme="light"] #accessibility-sidebar span.text-white/40,
     [data-theme="light"] #accessibility-sidebar span.text-white/60,
-    [data-theme="light"] #accessibility-sidebar span.text-paragraph-themed/60 {
+    [data-theme="light"] #accessibility-sidebar span.text-white/70,
+    [data-theme="light"] #accessibility-sidebar span.text-paragraph-themed/60,
+    [data-theme="light"] #accessibility-sidebar .font-mono.opacity-60 {
       color: #475569 !important;
+      opacity: 1 !important;
     }
 
     /* ==========================================================
@@ -2245,18 +2371,27 @@
 
     body.light-mode #accessibility-sidebar button[id^="toggle-"],
     [data-theme="light"] #accessibility-sidebar button[id^="toggle-"] {
-      background-color: #f1f5f9 !important;
-      border-color: #cbd5e1 !important;
-      color: #0f172a !important;
+      background-color: #ffffff !important;
+      border-color: color-mix(in srgb, var(--gold, #9a6700), transparent 75%) !important;
+      color: var(--text, #0f172a) !important;
     }
     body.light-mode #accessibility-sidebar button[id^="toggle-"]:hover,
     [data-theme="light"] #accessibility-sidebar button[id^="toggle-"]:hover {
-      border-color: #b45309 !important;
-      background-color: #e2e8f0 !important;
+      border-color: var(--gold, #b45309) !important;
+      background-color: color-mix(in srgb, var(--client-modal-bg, #ffffff) 92%, var(--gold, #9a6700) 8%) !important;
+    }
+    body.light-mode #accessibility-sidebar button[id^="toggle-"].bg-gold-themed/20,
+    [data-theme="light"] #accessibility-sidebar button[id^="toggle-"].bg-gold-themed/20 {
+      background-color: color-mix(in srgb, var(--gold, #9a6700), transparent 85%) !important;
+      border-color: var(--gold, #9a6700) !important;
+    }
+    body.light-mode #accessibility-sidebar button[id^="toggle-"] svg,
+    [data-theme="light"] #accessibility-sidebar button[id^="toggle-"] svg {
+      color: var(--client-text-paragraph-es, #334155) !important;
     }
     body.light-mode #accessibility-sidebar svg,
     [data-theme="light"] #accessibility-sidebar svg {
-      color: #475569 !important;
+      color: var(--client-text-paragraph-es, #334155);
     }
 
     /* Toggle Switch Background and Dot */
@@ -2290,64 +2425,132 @@
 
     /* Reset Button */
     #accessibility-sidebar button[onclick="resetAccessibility()"] {
-      background-color: color-mix(in srgb, var(--dark), black 15%) !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
-      color: var(--text) !important;
+      background-color: color-mix(in srgb, var(--dark, #12160e), black 15%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      color: #ffffff !important;
       transition: all 0.3s ease !important;
     }
     #accessibility-sidebar button[onclick="resetAccessibility()"]:hover {
-      background-color: color-mix(in srgb, var(--dark), black 5%) !important;
-      border-color: var(--gold) !important;
+      background-color: color-mix(in srgb, var(--dark, #12160e), black 5%) !important;
+      border-color: #fef08a !important;
     }
     #accessibility-sidebar button[onclick="resetAccessibility()"] svg {
-      color: var(--gold) !important;
+      color: #fef08a !important;
+    }
+    #accessibility-sidebar button[onclick="resetAccessibility()"] span:first-child {
+      color: #ffffff !important;
+    }
+    #accessibility-sidebar button[onclick="resetAccessibility()"] span:last-child {
+      color: #fef08a !important;
     }
     body.light-mode #accessibility-sidebar button[onclick="resetAccessibility()"],
     [data-theme="light"] #accessibility-sidebar button[onclick="resetAccessibility()"] {
-      background-color: #f1f5f9 !important;
+      background-color: #ffffff !important;
       border: 1px solid #cbd5e1 !important;
       color: #0f172a !important;
     }
     body.light-mode #accessibility-sidebar button[onclick="resetAccessibility()"]:hover,
     [data-theme="light"] #accessibility-sidebar button[onclick="resetAccessibility()"]:hover {
-      background-color: #e2e8f0 !important;
-      border-color: #b45309 !important;
+      background-color: #fffbeb !important;
+      border-color: #f59e0b !important;
     }
     body.light-mode #accessibility-sidebar button[onclick="resetAccessibility()"] span,
     [data-theme="light"] #accessibility-sidebar button[onclick="resetAccessibility()"] span {
       color: #0f172a !important;
     }
-    body.light-mode #accessibility-sidebar button[onclick="resetAccessibility()"] span.text-white/40,
-    [data-theme="light"] #accessibility-sidebar button[onclick="resetAccessibility()"] span.text-white/40 {
-      color: #64748b !important;
+    body.light-mode #accessibility-sidebar button[onclick="resetAccessibility()"] span.text-gold-themed,
+    [data-theme="light"] #accessibility-sidebar button[onclick="resetAccessibility()"] span.text-gold-themed,
+    body.light-mode #accessibility-sidebar button[onclick="resetAccessibility()"] span:last-child,
+    [data-theme="light"] #accessibility-sidebar button[onclick="resetAccessibility()"] span:last-child {
+      color: #78350f !important;
+      font-weight: 700 !important;
+    }
+    body.light-mode #accessibility-sidebar button[onclick="resetAccessibility()"] svg,
+    [data-theme="light"] #accessibility-sidebar button[onclick="resetAccessibility()"] svg {
+      color: #78350f !important;
+    }
+
+    /* Sidebars Slider and Toggles - Light Mode High Contrast */
+    body.light-mode #accessibility-sidebar,
+    [data-theme="light"] #accessibility-sidebar {
+      background-color: #ffffff !important;
+      color: #0f172a !important;
+      border-right: 1px solid rgba(0,0,0,0.1) !important;
+    }
+    body.light-mode #accessibility-sidebar label[for="font-size-slider-standalone"],
+    [data-theme="light"] #accessibility-sidebar label[for="font-size-slider-standalone"] {
+      color: #0f172a !important;
+    }
+    body.light-mode #accessibility-sidebar label[for="font-size-slider-standalone"] svg,
+    [data-theme="light"] #accessibility-sidebar label[for="font-size-slider-standalone"] svg {
+      color: #78350f !important;
+    }
+    body.light-mode #accessibility-sidebar label[for="font-size-slider-standalone"] + span,
+    [data-theme="light"] #accessibility-sidebar label[for="font-size-slider-standalone"] + span {
+      color: #78350f !important;
+      font-weight: 700 !important;
+    }
+    body.light-mode #font-size-badge-standalone,
+    [data-theme="light"] #font-size-badge-standalone {
+      background-color: #fef3c7 !important;
+      border: 1px solid #f59e0b !important;
+      color: #78350f !important;
+      font-weight: 800 !important;
+    }
+    body.light-mode #accessibility-sidebar input[type="range"],
+    [data-theme="light"] #accessibility-sidebar input[type="range"] {
+      accent-color: #78350f !important;
+    }
+    body.light-mode #accessibility-sidebar button[id^="toggle-"],
+    [data-theme="light"] #accessibility-sidebar button[id^="toggle-"] {
+      background-color: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    }
+    body.light-mode #accessibility-sidebar button[id^="toggle-"] span.text-white,
+    [data-theme="light"] #accessibility-sidebar button[id^="toggle-"] span.text-white {
+      color: #0f172a !important;
+      font-weight: 800 !important;
+    }
+    body.light-mode #accessibility-sidebar button[id^="toggle-"] span.text-gold-themed,
+    [data-theme="light"] #accessibility-sidebar button[id^="toggle-"] span.text-gold-themed {
+      color: #78350f !important;
+      font-weight: 700 !important;
+    }
+    body.light-mode #accessibility-sidebar button[id^="toggle-"] svg,
+    [data-theme="light"] #accessibility-sidebar button[id^="toggle-"] svg {
+      color: #475569 !important;
+    }
+    body.light-mode #accessibility-sidebar button[id^="toggle-"].border-gold-themed,
+    [data-theme="light"] #accessibility-sidebar button[id^="toggle-"].border-gold-themed {
+      background-color: #fffbeb !important;
+      border-color: #d97706 !important;
+    }
+    body.light-mode #accessibility-sidebar button[id^="toggle-"].border-gold-themed svg,
+    [data-theme="light"] #accessibility-sidebar button[id^="toggle-"].border-gold-themed svg {
+      color: #78350f !important;
     }
 
     /* Footer of sidebars */
     #virtual-order-sidebar .p-4.border-t,
-    #allergen-sidebar .p-4.bg-[#1b1f15].border-t,
-    #accessibility-sidebar .p-4.bg-[#1b1f15].border-t {
+    #allergen-sidebar .p-4.bg-[#1b1f15].border-t {
       background-color: color-mix(in srgb, var(--dark), black 20%) !important;
       border-top: 1px solid color-mix(in srgb, var(--gold), transparent 75%) !important;
     }
-    #allergen-sidebar .p-4.bg-[#1b1f15].border-t span,
-    #accessibility-sidebar .p-4.bg-[#1b1f15].border-t span {
+    #allergen-sidebar .p-4.bg-[#1b1f15].border-t span {
       color: var(--text-paragraph) !important;
       opacity: 0.8 !important;
     }
     body.light-mode #virtual-order-sidebar .p-4.border-t,
     body.light-mode #allergen-sidebar .p-4.bg-[#1b1f15].border-t,
-    body.light-mode #accessibility-sidebar .p-4.bg-[#1b1f15].border-t,
     [data-theme="light"] #virtual-order-sidebar .p-4.border-t,
-    [data-theme="light"] #allergen-sidebar .p-4.bg-[#1b1f15].border-t,
-    [data-theme="light"] #accessibility-sidebar .p-4.bg-[#1b1f15].border-t {
+    [data-theme="light"] #allergen-sidebar .p-4.bg-[#1b1f15].border-t {
       background-color: #f1f5f9 !important;
       border-top-color: #cbd5e1 !important;
     }
     body.light-mode #allergen-sidebar .p-4.bg-[#1b1f15].border-t span,
-    body.light-mode #accessibility-sidebar .p-4.bg-[#1b1f15].border-t span,
-    [data-theme="light"] #allergen-sidebar .p-4.bg-[#1b1f15].border-t span,
-    [data-theme="light"] #accessibility-sidebar .p-4.bg-[#1b1f15].border-t span {
-      color: #64748b !important;
+    [data-theme="light"] #allergen-sidebar .p-4.bg-[#1b1f15].border-t span {
+      color: #334155 !important;
       opacity: 1 !important;
     }
 
@@ -2517,24 +2720,24 @@
         <!-- Sidebar panel: fixed 16px root font size -->
         <div id="accessibility-sidebar" class="absolute top-0 bottom-0 left-0 w-[360px] max-w-[85vw] liquid-glass-modal rounded-r-[24px] z-[999999] flex flex-col shadow-2xl transform -translate-x-full transition-transform duration-300 ease-out" style="font-size: 16px; line-height: 1.4;">
             <!-- Header -->
-            <div class="p-[20px] border-b border-white/15 bg-[#12160e]/90 flex flex-col gap-[8px]">
+            <div id="accessibility-sidebar-header" class="liquid-glass-header p-[20px] border-b flex flex-col gap-[8px]">
                 <div class="flex justify-between items-center">
                     <div class="flex flex-col text-left">
-                        <span class="drawer-subtitle text-gold-themed text-[11px] font-bold tracking-[0.2em] leading-none" id="accessibility-drawer-subtitle">Preferencias Visuales / Visual Preferences</span>
-                        <h3 class="drawer-title text-white text-[18px] font-black tracking-wider leading-tight mt-[6px] flex items-center gap-[8px]" id="accessibility-drawer-title">
-                            <svg class="w-[20px] h-[20px] text-gold-themed shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <span class="drawer-subtitle text-[11px] font-bold tracking-[0.2em] leading-none" id="accessibility-drawer-subtitle">PREFERENCIAS VISUALES / VISUAL PREFERENCES</span>
+                        <h3 class="drawer-title text-[18px] font-black tracking-wider leading-tight mt-[6px] flex items-center gap-[8px]" id="accessibility-drawer-title">
+                            <svg class="w-[20px] h-[20px] shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path fill="none" d="M0 0h24v24H0z"/>
                                 <path d="M20.5 4c-2.61.7-5.67 1-8.5 1s-5.89-.3-8.5-1L3 6c1.86.5 4 .83 6 1v12h2v-6h2v6h2V7c2-.17 4.14-.5 6-1l-.5-2zM12 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM7 24h2v-2H7v2zm4 0h2v-2h-2v2zm4 0h2v-2h-2v2z"/>
                             </svg>
                             <span>Accesibilidad Visual</span>
                         </h3>
-                        <h4 class="text-slate-300 text-[10px] font-bold tracking-wider leading-none mt-[3px]">Visual accessibility</h4>
+                        <h4 class="drawer-en-subtitle text-[10px] font-bold tracking-wider leading-none mt-[3px]" id="accessibility-drawer-en-subtitle">Visual accessibility</h4>
                     </div>
-                    <button onclick="toggleAccessibilityModal(false)" class="drawer-close-btn w-[36px] h-[36px] rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-white font-extrabold text-[14px] flex items-center justify-center transition-all cursor-pointer active:scale-95" aria-label="Cerrar Accesibilidad / Close Accessibility">✕</button>
+                    <button onclick="toggleAccessibilityModal(false)" class="drawer-close-btn w-[36px] h-[36px] rounded-full border font-extrabold text-[14px] flex items-center justify-center transition-all cursor-pointer active:scale-95" aria-label="Cerrar Accesibilidad / Close Accessibility">✕</button>
                 </div>
-                <p class="drawer-description text-slate-200 text-[12px] font-semibold leading-relaxed text-left mt-[4px]" id="accessibility-drawer-description">
+                <p class="drawer-description text-[12px] font-semibold leading-relaxed text-left mt-[4px]" id="accessibility-drawer-description">
                     Ajusta las opciones de lectura y visualización de la carta.
-                    <span class="block text-gold-themed text-[11px] font-semibold mt-[2px]">Customize menu reading and visual display preferences.</span>
+                    <span class="block text-[11px] font-semibold mt-[2px]">Customize menu reading and visual display preferences.</span>
                 </p>
             </div>
             
@@ -2679,9 +2882,9 @@
             </div>
             
             <!-- Footer -->
-            <div class="p-[16px] bg-[#12160e]/90 border-t border-white/10 text-center flex flex-col gap-[3px] select-none">
-                <span class="text-slate-300 text-[11px] font-bold tracking-widest text-center">Lectura Adaptada y Accesible</span>
-                <span class="text-gold-themed text-[9.5px] font-bold tracking-widest leading-none text-center">Accessible Reading Settings</span>
+            <div id="accessibility-sidebar-footer" class="drawer-footer-box p-[16px] border-t text-center flex flex-col gap-[3px] select-none">
+                <span class="text-[11px] font-bold tracking-widest text-center">Lectura Adaptada y Accesible</span>
+                <span class="text-[9.5px] font-bold tracking-widest leading-none text-center">Accessible Reading Settings</span>
             </div>
         </div>
     </div>
