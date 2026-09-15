@@ -192,6 +192,12 @@
       --schedule-vacation-bg: rgba(245, 158, 11, 0.15);
       --schedule-vacation-border: rgba(245, 158, 11, 0.35);
       --schedule-vacation-text: #fbbf24;
+      --schedule-lastcall-bg: rgba(245, 158, 11, 0.2);
+      --schedule-lastcall-border: rgba(245, 158, 11, 0.5);
+      --schedule-lastcall-text: #fde68a;
+      --schedule-closing-bg: rgba(239, 68, 68, 0.2);
+      --schedule-closing-border: rgba(239, 68, 68, 0.5);
+      --schedule-closing-text: #fca5a5;
       --license-bg: rgba(0, 0, 0, 0.4);
       --license-border: rgba(212, 175, 55, 0.35);
       --license-text: #ffffff;
@@ -2245,6 +2251,25 @@
       color: #b91c1c !important;
     }
 
+    body.light-mode #schedule-status-banner-html,
+    [data-theme="light"] #schedule-status-banner-html {
+      --schedule-lastcall-bg: rgba(245, 158, 11, 0.12) !important;
+      --schedule-lastcall-border: rgba(217, 119, 6, 0.5) !important;
+      --schedule-lastcall-text: #78350f !important;
+      --schedule-closing-bg: rgba(239, 68, 68, 0.12) !important;
+      --schedule-closing-border: rgba(220, 38, 38, 0.5) !important;
+      --schedule-closing-text: #991b1b !important;
+      --schedule-open-bg: rgba(16, 185, 129, 0.12) !important;
+      --schedule-open-border: rgba(5, 150, 105, 0.5) !important;
+      --schedule-open-text: #064e3b !important;
+      --schedule-closed-bg: rgba(244, 63, 94, 0.12) !important;
+      --schedule-closed-border: rgba(225, 29, 72, 0.5) !important;
+      --schedule-closed-text: #881337 !important;
+      --schedule-vacation-bg: rgba(245, 158, 11, 0.12) !important;
+      --schedule-vacation-border: rgba(217, 119, 6, 0.5) !important;
+      --schedule-vacation-text: #78350f !important;
+    }
+
     body.light-mode .menudia-inclusions-card,
     [data-theme="light"] .menudia-inclusions-card {
       background-color: color-mix(in srgb, var(--dark), var(--gold) 3%) !important;
@@ -3315,10 +3340,12 @@
 
         <!-- Opening Hours / Schedule Status Banner -->
         <div id="schedule-status-banner-html" class="hidden mb-6 p-3.5 px-5 rounded-2xl border flex items-center justify-center gap-3 transition-all mt-6 shadow-lg select-none">
-            <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span id="schedule-banner-icon-container" class="shrink-0 flex items-center justify-center">
+                <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </span>
             <div class="flex flex-col items-center justify-center text-center">
                 <span id="schedule-banner-text-es" class="text-xs font-bold tracking-wide"></span>
-                <span id="schedule-banner-text-en" class="text-[11px] opacity-80 font-medium mt-0.5"></span>
+                <span id="schedule-banner-text-en" class="text-[11px] opacity-80 font-normal mt-0.5"></span>
             </div>
         </div>
 
@@ -3763,6 +3790,12 @@
             '--schedule-vacation-bg': 'rgba(245, 158, 11, 0.15)',
             '--schedule-vacation-border': 'rgba(245, 158, 11, 0.35)',
             '--schedule-vacation-text': '#fbbf24',
+            '--schedule-lastcall-bg': 'rgba(245, 158, 11, 0.2)',
+            '--schedule-lastcall-border': 'rgba(245, 158, 11, 0.5)',
+            '--schedule-lastcall-text': '#fde68a',
+            '--schedule-closing-bg': 'rgba(239, 68, 68, 0.2)',
+            '--schedule-closing-border': 'rgba(239, 68, 68, 0.5)',
+            '--schedule-closing-text': '#fca5a5',
             '--license-bg': 'rgba(0, 0, 0, 0.4)',
             '--license-border': 'rgba(212, 175, 55, 0.35)',
             '--license-text': '#ffffff',
@@ -3805,15 +3838,21 @@
             '--client-footer-text': '#606b76',
             '--client-footer-accent': '#8e7324',
             '--client-footer-border': '#9b7e27',
-            '--schedule-open-bg': 'rgba(16, 185, 129, 0.2)',
+            '--schedule-open-bg': 'rgba(16, 185, 129, 0.12)',
             '--schedule-open-border': 'rgba(5, 150, 105, 0.5)',
             '--schedule-open-text': '#064e3b',
-            '--schedule-closed-bg': 'rgba(244, 63, 94, 0.2)',
+            '--schedule-closed-bg': 'rgba(244, 63, 94, 0.12)',
             '--schedule-closed-border': 'rgba(225, 29, 72, 0.5)',
             '--schedule-closed-text': '#881337',
-            '--schedule-vacation-bg': 'rgba(245, 158, 11, 0.2)',
+            '--schedule-vacation-bg': 'rgba(245, 158, 11, 0.12)',
             '--schedule-vacation-border': 'rgba(217, 119, 6, 0.5)',
             '--schedule-vacation-text': '#78350f',
+            '--schedule-lastcall-bg': 'rgba(245, 158, 11, 0.12)',
+            '--schedule-lastcall-border': 'rgba(217, 119, 6, 0.5)',
+            '--schedule-lastcall-text': '#78350f',
+            '--schedule-closing-bg': 'rgba(239, 68, 68, 0.12)',
+            '--schedule-closing-border': 'rgba(220, 38, 38, 0.5)',
+            '--schedule-closing-text': '#991b1b',
             '--license-bg': 'rgba(212, 175, 55, 0.08)',
             '--license-border': 'rgba(154, 103, 0, 0.35)',
             '--license-text': '#0f172a',
@@ -3889,6 +3928,10 @@
 
           if (typeof updateAccessibilityUI === 'function') {
             updateAccessibilityUI();
+          }
+
+          if (typeof updateScheduleBannerState === 'function') {
+            updateScheduleBannerState();
           }
 
           try {
@@ -4494,9 +4537,9 @@
                 isLastCall: true,
                 isFinalClosing: true,
                 remainingMinutes: remainingMins,
-                textEs: '🚨 ' + clientNameEs + ' cierra en ' + remainingMins + ' min (a las ' + closeStr + ')',
-                textEn: '🚨 ' + clientNameEn + ' closes in ' + remainingMins + ' min (at ' + closeStr + ')',
-                badgeColorClass: 'bg-red-500/20 border-red-500/50 text-red-300 animate-pulse'
+                textEs: clientNameEs + ' cierra en ' + remainingMins + ' min (a las ' + closeStr + ')',
+                textEn: clientNameEn + ' closes in ' + remainingMins + ' min (at ' + closeStr + ')',
+                badgeColorClass: 'bg-red-500/15 border-red-500/50 text-red-900 dark:text-red-300 animate-pulse'
               };
             } else {
               const sEs = shiftLabelEs || 'este turno';
@@ -4506,9 +4549,9 @@
                 isLastCall: true,
                 isFinalClosing: false,
                 remainingMinutes: remainingMins,
-                textEs: '⏳ El turno de ' + sEs + ' finaliza en ' + remainingMins + ' min (a las ' + closeStr + ')',
-                textEn: '⏳ ' + sEn + ' shift ends in ' + remainingMins + ' min (at ' + closeStr + ')',
-                badgeColorClass: 'bg-amber-500/20 border-amber-500/50 text-amber-300 animate-pulse'
+                textEs: 'El turno de ' + sEs + ' finaliza en ' + remainingMins + ' min (a las ' + closeStr + ')',
+                textEn: sEn + ' shift ends in ' + remainingMins + ' min (at ' + closeStr + ')',
+                badgeColorClass: 'bg-amber-500/15 border-amber-500/50 text-amber-900 dark:text-amber-300 animate-pulse'
               };
             }
           }
@@ -7835,6 +7878,7 @@
           const banner = document.getElementById('schedule-status-banner-html');
           const textEs = document.getElementById('schedule-banner-text-es');
           const textEn = document.getElementById('schedule-banner-text-en');
+          const iconContainer = document.getElementById('schedule-banner-icon-container');
           if (!banner || !DATA.scheduleConfig || !DATA.scheduleConfig.enabled) {
             if (banner) banner.classList.add('hidden');
             return;
@@ -7849,13 +7893,19 @@
             if (textEn) textEn.textContent = status.textEn || '';
             banner.className = 'mb-6 p-3.5 px-5 rounded-2xl border flex items-center justify-center gap-3 transition-all mt-6 shadow-lg select-none font-semibold';
             if (status.isFinalClosing) {
-              banner.style.backgroundColor = 'rgba(239, 68, 68, 0.2)';
-              banner.style.borderColor = 'rgba(239, 68, 68, 0.5)';
-              banner.style.color = '#fca5a5';
+              banner.style.backgroundColor = 'var(--schedule-closing-bg)';
+              banner.style.borderColor = 'var(--schedule-closing-border)';
+              banner.style.color = 'var(--schedule-closing-text)';
+              if (iconContainer) {
+                iconContainer.innerHTML = '<svg class="w-5 h-5 shrink-0 animate-bounce" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+              }
             } else {
-              banner.style.backgroundColor = 'rgba(245, 158, 11, 0.2)';
-              banner.style.borderColor = 'rgba(245, 158, 11, 0.5)';
-              banner.style.color = '#fde68a';
+              banner.style.backgroundColor = 'var(--schedule-lastcall-bg)';
+              banner.style.borderColor = 'var(--schedule-lastcall-border)';
+              banner.style.color = 'var(--schedule-lastcall-text)';
+              if (iconContainer) {
+                iconContainer.innerHTML = '<svg class="w-5 h-5 shrink-0 animate-pulse" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 22h14M5 2h14M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/></svg>';
+              }
             }
             banner.classList.add('animate-pulse');
           } else if (status.isOpen) {
@@ -7866,6 +7916,9 @@
             banner.style.backgroundColor = 'var(--schedule-open-bg)';
             banner.style.borderColor = 'var(--schedule-open-border)';
             banner.style.color = 'var(--schedule-open-text)';
+            if (iconContainer) {
+              iconContainer.innerHTML = '<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
+            }
           } else if (status.isVacation) {
             if (textEs) textEs.textContent = status.textEs;
             if (textEn) textEn.textContent = status.textEn || '';
@@ -7874,6 +7927,9 @@
             banner.style.backgroundColor = 'var(--schedule-vacation-bg)';
             banner.style.borderColor = 'var(--schedule-vacation-border)';
             banner.style.color = 'var(--schedule-vacation-text)';
+            if (iconContainer) {
+              iconContainer.innerHTML = '<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>';
+            }
           } else {
             // Establecimiento Cerrado: Mensaje personalizado cálido bilingüe
             const timeStr = status.nextOpeningTime || '';
@@ -7900,6 +7956,9 @@
             banner.style.backgroundColor = 'var(--schedule-closed-bg)';
             banner.style.borderColor = 'var(--schedule-closed-border)';
             banner.style.color = 'var(--schedule-closed-text)';
+            if (iconContainer) {
+              iconContainer.innerHTML = '<svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
+            }
           }
           banner.classList.remove('hidden');
           updateAnnouncementBannerState();
