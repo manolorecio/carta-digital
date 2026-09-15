@@ -2204,6 +2204,47 @@
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.08) !important;
     }
 
+    body.light-mode .bg-emerald-500/20,
+    [data-theme="light"] .bg-emerald-500/20 {
+      background-color: #dcfce7 !important;
+      color: #166534 !important;
+      border-color: #86efac !important;
+    }
+
+    body.light-mode .text-emerald-300,
+    [data-theme="light"] .text-emerald-300 {
+      color: #166534 !important;
+    }
+
+    body.light-mode .bg-amber-500/20,
+    [data-theme="light"] .bg-amber-500/20 {
+      background-color: #fef3c7 !important;
+      color: #92400e !important;
+      border-color: #fcd34d !important;
+    }
+
+    body.light-mode .text-amber-300,
+    [data-theme="light"] .text-amber-300 {
+      color: #92400e !important;
+    }
+
+    body.light-mode .bg-red-500/20,
+    [data-theme="light"] .bg-red-500/20 {
+      background-color: #fee2e2 !important;
+      color: #991b1b !important;
+      border-color: #fca5a5 !important;
+    }
+
+    body.light-mode .text-red-300,
+    [data-theme="light"] .text-red-300 {
+      color: #991b1b !important;
+    }
+
+    body.light-mode .text-red-400,
+    [data-theme="light"] .text-red-400 {
+      color: #b91c1c !important;
+    }
+
     body.light-mode .menudia-inclusions-card,
     [data-theme="light"] .menudia-inclusions-card {
       background-color: color-mix(in srgb, var(--dark), var(--gold) 3%) !important;
@@ -2246,6 +2287,8 @@
 
     body.light-mode .extras-section-container p.text-white,
     [data-theme="light"] .extras-section-container p.text-white,
+    body.light-mode #menudia-banner-container p.text-white,
+    [data-theme="light"] #menudia-banner-container p.text-white,
     body.light-mode .allergen-section-container span.text-white,
     [data-theme="light"] .allergen-section-container span.text-white {
       color: var(--text) !important;
@@ -2256,17 +2299,29 @@
     body.light-mode .extras-section-container h2.text-gold-themed,
     [data-theme="light"] .extras-section-container h2.text-gold-themed,
     body.light-mode .extras-section-container h2,
-    [data-theme="light"] .extras-section-container h2 {
-      color: var(--gold) !important;
+    [data-theme="light"] .extras-section-container h2,
+    body.light-mode #menu-container .text-gold-themed,
+    [data-theme="light"] #menu-container .text-gold-themed {
+      color: #92400e !important; /* Darker amber/gold for better contrast in light mode */
     }
 
-    body.light-mode #menu-container section p[class*="text-paragraph-themed/80"],
-    [data-theme="light"] #menu-container section p[class*="text-paragraph-themed/80"],
-    body.light-mode .extras-section-container p[class*="text-paragraph-themed/80"],
-    [data-theme="light"] .extras-section-container p[class*="text-paragraph-themed/80"] {
-      color: var(--text-paragraph) !important;
+    body.light-mode [class*="text-gold-themed/90"],
+    [data-theme="light"] [class*="text-gold-themed/90"] {
+      color: #92400e !important;
+      opacity: 1 !important;
+    }
+
+    body.light-mode .price-col .price-label-en,
+    [data-theme="light"] .price-col .price-label-en {
+      color: #64748b !important;
       opacity: 1 !important;
       font-weight: 700 !important;
+    }
+
+    body.light-mode .spanish-desc-themed,
+    [data-theme="light"] .spanish-desc-themed {
+      color: var(--text-paragraph) !important;
+      opacity: 1 !important;
     }
 
     body.light-mode .price-col .price-label-es,
@@ -2276,9 +2331,11 @@
       font-weight: 700 !important;
     }
 
-    body.light-mode .price-col .price-label-en,
-    [data-theme="light"] .price-col .price-label-en {
-      color: var(--client-text-paragraph-en) !important;
+    body.light-mode #menu-container section p[class*="text-paragraph-themed/80"],
+    [data-theme="light"] #menu-container section p[class*="text-paragraph-themed/80"],
+    body.light-mode .extras-section-container p[class*="text-paragraph-themed/80"],
+    [data-theme="light"] .extras-section-container p[class*="text-paragraph-themed/80"] {
+      color: #475569 !important;
       opacity: 1 !important;
       font-weight: 700 !important;
     }
@@ -2287,24 +2344,18 @@
     [data-theme="light"] #menu-container h3.text-white,
     body.light-mode .extras-section-container h3.text-white,
     [data-theme="light"] .extras-section-container h3.text-white {
-      color: var(--text) !important;
-    }
-
-    body.light-mode .spanish-desc-themed,
-    [data-theme="light"] .spanish-desc-themed {
-      color: var(--client-text-paragraph-es) !important;
-      opacity: 1 !important;
+      color: #1e293b !important;
     }
 
     body.light-mode .english-desc-themed,
     [data-theme="light"] .english-desc-themed {
-      color: var(--client-text-paragraph-en) !important;
+      color: #475569 !important;
       opacity: 1 !important;
     }
 
     body.light-mode .third-desc-themed,
     [data-theme="light"] .third-desc-themed {
-      color: var(--text-paragraph-third) !important;
+      color: #64748b !important;
       opacity: 1 !important;
     }
 
