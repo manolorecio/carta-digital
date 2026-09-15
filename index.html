@@ -2668,13 +2668,13 @@
                     <div class="flex flex-col text-left">
                         <span class="drawer-subtitle text-gold-themed text-[10px] font-bold uppercase tracking-[0.2em] leading-none" id="allergen-drawer-subtitle">PREFERENCIAS DE CARTA / MENU PREFERENCES</span>
                         <h3 class="drawer-title text-white text-base font-bold uppercase tracking-wider leading-none mt-2" id="allergen-drawer-title">FILTRO DE ALÉRGENOS</h3>
-                        <h4 class="text-paragraph-themed/80 text-[9.5px] font-bold uppercase tracking-wider leading-none mt-1">ALLERGEN FILTER</h4>
+                        <h4 class="text-paragraph-themed/80 text-[9.5px] font-normal uppercase tracking-wider leading-none mt-1">ALLERGEN FILTER</h4>
                     </div>
                     <button onclick="toggleAllergenModal(false)" class="drawer-close-btn w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 border border-white/20 text-white font-bold text-sm flex items-center justify-center transition-all cursor-pointer active:scale-95" aria-label="Cerrar Filtro / Close Filter">✕</button>
                 </div>
                 <p class="drawer-description text-white/60 text-[9px] uppercase font-bold leading-relaxed tracking-wide text-left" id="allergen-drawer-description">
                     Oculta los platos que contengan alérgenos no deseados.
-                    <span class="block text-paragraph-themed/70 text-[8px] font-bold mt-1 leading-normal">Temporarily hide specific plates containing unwanted allergens.</span>
+                    <span class="block text-paragraph-themed/70 text-[8px] font-normal mt-1 leading-normal">Temporarily hide specific plates containing unwanted allergens.</span>
                 </p>
             </div>
             
@@ -2747,7 +2747,7 @@
 
             <!-- Title -->
             <h3 class="text-lg font-bold uppercase tracking-wider text-white" id="wifi-modal-title">Red WiFi</h3>
-            <p class="text-[11px] font-bold uppercase tracking-widest text-[#e9e478]/80 mb-5" style="color: var(--client-text-paragraph-en, rgba(233, 228, 120, 0.8));">WiFi Guest Access</p>
+            <p class="text-[11px] font-normal uppercase tracking-widest text-[#e9e478]/80 mb-5" style="color: var(--client-text-paragraph-en, rgba(233, 228, 120, 0.8));">WiFi Guest Access</p>
 
             <!-- Data Card -->
             <div class="w-full space-y-3 mb-5 text-left">
@@ -2796,16 +2796,16 @@
                 <div class="flex justify-between items-center">
                     <div class="flex flex-col text-left">
                         <span class="drawer-subtitle text-[11px] font-bold tracking-[0.2em] leading-none" id="accessibility-drawer-subtitle">PREFERENCIAS VISUALES / VISUAL PREFERENCES</span>
-                        <h3 class="drawer-title text-[18px] font-black tracking-wider leading-tight mt-[6px] flex items-center gap-[8px]" id="accessibility-drawer-title">
+                        <h3 class="drawer-title text-[18px] font-bold tracking-wider leading-tight mt-[6px] flex items-center gap-[8px]" id="accessibility-drawer-title">
                             <svg class="w-[20px] h-[20px] shrink-0" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path fill="none" d="M0 0h24v24H0z"/>
                                 <path d="M20.5 4c-2.61.7-5.67 1-8.5 1s-5.89-.3-8.5-1L3 6c1.86.5 4 .83 6 1v12h2v-6h2v6h2V7c2-.17 4.14-.5 6-1l-.5-2zM12 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM7 24h2v-2H7v2zm4 0h2v-2h-2v2zm4 0h2v-2h-2v2z"/>
                             </svg>
                             <span>Accesibilidad Visual</span>
                         </h3>
-                        <h4 class="drawer-en-subtitle text-[10px] font-bold tracking-wider leading-none mt-[3px]" id="accessibility-drawer-en-subtitle">Visual accessibility</h4>
+                        <h4 class="drawer-en-subtitle text-[10px] font-normal tracking-wider leading-none mt-[3px]" id="accessibility-drawer-en-subtitle">Visual accessibility</h4>
                     </div>
-                    <button onclick="toggleAccessibilityModal(false)" class="drawer-close-btn w-[36px] h-[36px] rounded-full border font-extrabold text-[14px] flex items-center justify-center transition-all cursor-pointer active:scale-95" aria-label="Cerrar Accesibilidad / Close Accessibility">✕</button>
+                    <button onclick="toggleAccessibilityModal(false)" class="drawer-close-btn w-[36px] h-[36px] rounded-full border font-bold text-[14px] flex items-center justify-center transition-all cursor-pointer active:scale-95" aria-label="Cerrar Accesibilidad / Close Accessibility">✕</button>
                 </div>
                 <p class="drawer-description text-[12px] font-semibold leading-relaxed text-left mt-[4px]" id="accessibility-drawer-description">
                     Ajusta las opciones de lectura y visualización de la carta.
@@ -2819,15 +2819,15 @@
                 <div class="border border-white/20 bg-black/40 rounded-[16px] p-[16px] text-left shadow-sm">
                   <div class="flex justify-between items-center mb-[12px]">
                     <div class="flex flex-col gap-[2px]">
-                      <label for="font-size-slider-standalone" class="text-white font-black tracking-wide leading-none flex items-center gap-[6px] text-[11px] cursor-pointer">
+                      <label for="font-size-slider-standalone" class="text-white font-bold tracking-wide leading-none flex items-center gap-[6px] text-[11px] cursor-pointer">
                         <svg class="w-[14px] h-[14px] text-gold-themed shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
                         <span>Tamaño de Texto</span>
                       </label>
-                      <span class="text-gold-themed text-[9px] font-bold italic ml-[20px]">
+                      <span class="text-gold-themed text-[9px] font-normal italic ml-[20px]">
                         Menu Text Size
                       </span>
                     </div>
-                    <span id="font-size-display-standalone" class="text-gold-themed font-mono text-[11px] font-extrabold px-[10px] py-[3px] rounded-[6px] border bg-gold-themed/10 border-gold-themed/30">100%</span>
+                    <span id="font-size-display-standalone" class="text-gold-themed font-mono text-[11px] font-bold px-[10px] py-[3px] rounded-[6px] border bg-gold-themed/10 border-gold-themed/30">100%</span>
                   </div>
                   <input
                     id="font-size-slider-standalone"
@@ -2862,8 +2862,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                       </svg>
                       <span class="flex flex-col">
-                        <span class="text-white font-black text-[12px] tracking-wide leading-tight">Blanco y Negro</span>
-                        <span class="text-gold-themed text-[10px] font-bold tracking-wide mt-[2px] italic">Grayscale Mode</span>
+                        <span class="text-white font-bold text-[12px] tracking-wide leading-tight">Blanco y Negro</span>
+                        <span class="text-gold-themed text-[10px] font-normal tracking-wide mt-[2px] italic">Grayscale Mode</span>
                       </span>
                     </span>
                     <span class="w-[36px] h-[20px] rounded-full relative transition-colors border border-white/20 bg-black/50 block" id="switch-bg-grayscale">
@@ -2883,8 +2883,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M12 3a9 9 0 0 0 0 18M12 3a9 9 0 0 1 0 18" />
                       </svg>
                       <span class="flex flex-col">
-                        <span class="text-white font-black text-[12px] tracking-wide leading-tight">Alto Contraste</span>
-                        <span class="text-gold-themed text-[10px] font-bold tracking-wide mt-[2px] italic">High Contrast</span>
+                        <span class="text-white font-bold text-[12px] tracking-wide leading-tight">Alto Contraste</span>
+                        <span class="text-gold-themed text-[10px] font-normal tracking-wide mt-[2px] italic">High Contrast</span>
                       </span>
                     </span>
                     <span class="w-[36px] h-[20px] rounded-full relative transition-colors border border-white/20 bg-black/50 block" id="switch-bg-highContrast">
@@ -2904,8 +2904,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
                       </svg>
                       <span class="flex flex-col">
-                        <span class="text-white font-black text-[12px] tracking-wide leading-tight">Guía de Lectura</span>
-                        <span class="text-gold-themed text-[10px] font-bold tracking-wide mt-[2px] italic">Reading Guide (WCAG Mask)</span>
+                        <span class="text-white font-bold text-[12px] tracking-wide leading-tight">Guía de Lectura</span>
+                        <span class="text-gold-themed text-[10px] font-normal tracking-wide mt-[2px] italic">Reading Guide (WCAG Mask)</span>
                       </span>
                     </span>
                     <span class="w-[36px] h-[20px] rounded-full relative transition-colors border border-white/20 bg-black/50 block" id="switch-bg-readingGuide">
@@ -2925,8 +2925,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802" />
                       </svg>
                       <span class="flex flex-col">
-                        <span class="text-white font-black text-[12px] tracking-wide leading-tight">Fuente Comprensible (Lexend)</span>
-                        <span class="text-gold-themed text-[10px] font-bold tracking-wide mt-[2px] italic">Readable Font (Lexend)</span>
+                        <span class="text-white font-bold text-[12px] tracking-wide leading-tight">Fuente Comprensible (Lexend)</span>
+                        <span class="text-gold-themed text-[10px] font-normal tracking-wide mt-[2px] italic">Readable Font (Lexend)</span>
                       </span>
                     </span>
                     <span class="w-[36px] h-[20px] rounded-full relative transition-colors border border-white/20 bg-black/50 block" id="switch-bg-dyslexiaFont">
@@ -2946,8 +2946,8 @@
                       <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
                     </svg>
                     <span class="flex flex-col items-center">
-                      <span class="text-[11px] font-black tracking-[0.15em] leading-none text-white">RESTABLECER AJUSTES</span>
-                      <span class="text-gold-themed text-[9px] font-bold tracking-[0.15em] leading-none mt-[4px]">RESET SETTINGS</span>
+                      <span class="text-[11px] font-bold tracking-[0.15em] leading-none text-white">RESTABLECER AJUSTES</span>
+                      <span class="text-gold-themed text-[9px] font-normal tracking-[0.15em] leading-none mt-[4px]">RESET SETTINGS</span>
                     </span>
                   </button>
                 </div>
@@ -2956,7 +2956,7 @@
             <!-- Footer -->
             <div id="accessibility-sidebar-footer" class="drawer-footer-box p-[16px] border-t text-center flex flex-col gap-[3px] select-none">
                 <span class="text-[11px] font-bold tracking-widest text-center">Lectura Adaptada y Accesible</span>
-                <span class="text-[9.5px] font-bold tracking-widest leading-none text-center">Accessible Reading Settings</span>
+                <span class="text-[9.5px] font-normal tracking-widest leading-none text-center">Accessible Reading Settings</span>
             </div>
         </div>
     </div>
@@ -3126,9 +3126,9 @@
 
             <!-- Header -->
             <div class="text-left pr-8 mb-5 pb-3 border-b border-gold-themed/20">
-                <span class="text-gold-themed text-[10px] font-extrabold uppercase tracking-[0.2em] block">CONFIGURAR MENÚ DEL DÍA</span>
-                <h3 id="menudia-config-title-es" class="text-lg font-extrabold uppercase tracking-wide text-white mt-1 leading-snug">Menú del Día</h3>
-                <div id="menudia-config-price" class="text-gold-themed text-base font-extrabold mt-1">12,50€</div>
+                <span class="text-gold-themed text-[10px] font-bold uppercase tracking-[0.2em] block">CONFIGURAR MENÚ DEL DÍA</span>
+                <h3 id="menudia-config-title-es" class="text-lg font-bold uppercase tracking-wide text-white mt-1 leading-snug">Menú del Día</h3>
+                <div id="menudia-config-price" class="text-gold-themed text-base font-bold mt-1">12,50€</div>
             </div>
 
             <!-- Configuration Fields -->
@@ -3340,8 +3340,8 @@
                     </svg>
                 </span>
                 <div class="text-left">
-                    <p class="text-[11px] font-bold uppercase leading-none" style="color: var(--banner-text);">Filtro activo: Ocultando platos con alérgenos escogidos</p>
-                    <p id="allergen-banner-list-text" class="text-[9px] font-bold uppercase mt-1 leading-tight text-left" style="color: var(--banner-text); opacity: 0.85;">Active filter: Hiding plates with selected allergens</p>
+                    <p id="allergen-banner-es" class="text-[11px] font-bold uppercase leading-none" style="color: var(--banner-text);">Filtro activo: Ocultando platos con alérgenos escogidos</p>
+                    <p id="allergen-banner-en" class="text-[9px] font-normal uppercase mt-1 leading-tight text-left" style="color: var(--banner-text); opacity: 0.85;">Active filter: Hiding plates with selected allergens</p>
                 </div>
             </div>
             <button onclick="clearAllFilters()" aria-label="Restablecer filtros de alérgenos / Reset allergen filters" class="bg-red-500/20 hover:bg-red-500 border border-red-500/30 text-white font-bold text-[9px] uppercase px-3 py-1.5 rounded-full transition-all flex-shrink-0 cursor-pointer">Restablecer / Clear</button>
@@ -6827,7 +6827,8 @@
           const activeCountText = document.getElementById('active-filters-count');
           const triggerBadge = document.getElementById('trigger-badge');
           const banner = document.getElementById('allergen-active-banner-html');
-          const bannerText = document.getElementById('allergen-banner-list-text');
+          const bannerEs = document.getElementById('allergen-banner-es');
+          const bannerEn = document.getElementById('allergen-banner-en');
 
           const count = activeFilters.length;
           try {
@@ -6844,11 +6845,19 @@
             banner.classList.remove('hidden');
             banner.classList.add('flex');
             
-            const names = activeFilters.map(id => {
+            const namesEs = activeFilters.map(id => {
               const info = DATA.allergensInfo.find(a => a.id === id);
               return info ? info.label.split(' / ')[0] : id;
             }).join(', ');
-            bannerText.textContent = 'Active filter: Hiding plates with selected allergens (' + names + ')';
+
+            const namesEn = activeFilters.map(id => {
+              const info = DATA.allergensInfo.find(a => a.id === id);
+              const label = info ? info.label : id;
+              return label.includes(' / ') ? label.split(' / ')[1] : label.split(' / ')[0];
+            }).join(', ');
+
+            bannerEs.textContent = 'Filtro activo: Ocultando platos con alérgenos (' + namesEs + ')';
+            bannerEn.textContent = 'Active filter: Hiding plates with allergens (' + namesEn + ')';
           } else {
             counterBar.classList.add('hidden');
             triggerBadge.style.setProperty('display', 'none', 'important');
@@ -7064,7 +7073,7 @@
                 
                 <span class="flex-grow min-w-0 flex flex-col">
                   <span class="text-white font-bold text-[12px] uppercase tracking-wide leading-tight block">${es}</span>
-                  ${en ? `<span class="text-paragraph-themed text-[9px] font-bold uppercase opacity-80 mt-1 leading-none block">${en}</span>` : ''}
+                  ${en ? `<span class="text-paragraph-themed text-[9px] font-normal uppercase opacity-80 mt-1 leading-none block">${en}</span>` : ''}
                 </span>
                 
                 <span class="flex-shrink-0">
@@ -7382,12 +7391,12 @@
                                     <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2v0a5 5 0 0 0-5 5v8c0 1.1.9 2 2 2h3M19 17v5"></path></svg>
                                     <div class='flex flex-col gap-0.5'>
                                         <h3 class='text-gold-themed text-base font-bold uppercase tracking-widest' lang='es'>${currentBlock}</h3>
-                                        ${blockEn ? `<span class='text-paragraph-themed/80 text-[11px] font-bold uppercase tracking-wide italic' lang='en'>${blockEn}</span>` : ''}
+                                        ${blockEn ? `<span class='text-paragraph-themed/80 text-[11px] font-normal uppercase tracking-wide italic' lang='en'>${blockEn}</span>` : ''}
                                     </div>
                                 </div>` : showSubHeader ? `
                                 <div class='pt-6 pb-2 border-b border-gold-themed/20 mb-6 text-left w-full'>
                                     <h3 class='text-gold-themed text-[1.05rem] font-bold uppercase tracking-[2px]' lang='es'>${dish.subCategory.split(' / ')[0]}</h3>
-                                    ${dish.subCategory.includes(' / ') ? `<p class='text-paragraph-themed/80 text-[11px] font-bold uppercase mt-0.5' lang='en'>${dish.subCategory.split(' / ')[1]}</p>` : ''}
+                                    ${dish.subCategory.includes(' / ') ? `<p class='text-paragraph-themed/80 text-[11px] font-normal uppercase mt-0.5' lang='en'>${dish.subCategory.split(' / ')[1]}</p>` : ''}
                                 </div>` : '';
 
                                 const p1 = typeof dish.price === 'number' ? dish.price : parseFloat(dish.price || 0);
@@ -7563,7 +7572,7 @@
                                 </svg>
                                 <div>
                                   <h3 class='text-gold-themed text-[0.95rem] sm:text-base font-bold uppercase tracking-wider' lang='es'>El Menú incluye:</h3>
-                                  <p class='text-paragraph-themed/80 text-[11px] font-bold uppercase tracking-wide' lang='en'>The Menu includes:</p>
+                                  <p class='text-paragraph-themed/80 text-[11px] font-normal uppercase tracking-wide' lang='en'>The Menu includes:</p>
                                 </div>
                               </div>
                               <div class='space-y-4'>
