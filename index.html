@@ -7429,8 +7429,8 @@
                     } else if (scheduleState.status === 'closing-soon') {
                         icon = '<svg style="display:inline-block; width:14px; height:14px; vertical-align:middle;" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>';
                         isUrgent = true;
-                        textEs = '¡Últimos minutos! Quedan ' + scheduleState.remainingMinutes + ' min (Cierra a las ' + scheduleState.endTimeStr + ')';
-                        textEn = 'Last call! ' + scheduleState.remainingMinutes + ' min left (Closes at ' + scheduleState.endTimeStr + ')';
+                        textEs = '¡Últimos minutos! Quedan ' + scheduleState.remainingMinutes + ' min (Finaliza a las ' + scheduleState.endTimeStr + ')';
+                        textEn = 'Last call! ' + scheduleState.remainingMinutes + ' min left (Ends at ' + scheduleState.endTimeStr + ')';
                     } else if (scheduleState.status === 'opening-soon') {
                         icon = '<svg style="display:inline-block; width:14px; height:14px; vertical-align:middle;" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20 3a1 1 0 0 0 0-2H4a1 1 0 0 0 0 2h1.049c.146 1.836.743 5.75 3.194 8-2.585 2.511-3.111 7.734-3.216 10H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2h-1.027c-.105-2.264-.631-7.487-3.216-10 2.451-2.252 3.048-6.166 3.194-8Zm-6.42 7.126a1 1 0 0 0 .035 1.767c2.437 1.228 3.2 6.311 3.355 9.107H7.03c.151-2.8.918-7.879 3.355-9.107a1 1 0 0 0 .035-1.767C7.881 8.717 7.227 4.844 7.058 3h9.884c-.169 1.844-.823 5.717-3.362 7.126M12 13s3 2.4 3 3.6V20H9v-3.4c0-1.2 3-3.6 3-3.6"/></svg>';
                         textEs = 'Próxima apertura hoy a las ' + scheduleState.startTimeStr + ' (hasta ' + scheduleState.endTimeStr + ')';
@@ -8423,8 +8423,8 @@
                   } else if (state.status === 'closing-soon') {
                     icon = '<svg style="display:inline-block; width:14px; height:14px; vertical-align:middle;" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>';
                     isUrgent = true;
-                    textEs = '¡Últimos minutos! Quedan ' + state.remainingMinutes + ' min (Cierra a las ' + state.endTimeStr + ')';
-                    textEn = 'Last call! ' + state.remainingMinutes + ' min left (Closes at ' + state.endTimeStr + ')';
+                    textEs = '¡Últimos minutos! Quedan ' + state.remainingMinutes + ' min (Finaliza a las ' + state.endTimeStr + ')';
+                    textEn = 'Last call! ' + state.remainingMinutes + ' min left (Ends at ' + state.endTimeStr + ')';
                   } else if (state.status === 'opening-soon') {
                     icon = '<svg style="display:inline-block; width:14px; height:14px; vertical-align:middle;" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20 3a1 1 0 0 0 0-2H4a1 1 0 0 0 0 2h1.049c.146 1.836.743 5.75 3.194 8-2.585 2.511-3.111 7.734-3.216 10H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2h-1.027c-.105-2.264-.631-7.487-3.216-10 2.451-2.252 3.048-6.166 3.194-8Zm-6.42 7.126a1 1 0 0 0 .035 1.767c2.437 1.228 3.2 6.311 3.355 9.107H7.03c.151-2.8.918-7.879 3.355-9.107a1 1 0 0 0 .035-1.767C7.881 8.717 7.227 4.844 7.058 3h9.884c-.169 1.844-.823 5.717-3.362 7.126M12 13s3 2.4 3 3.6V20H9v-3.4c0-1.2 3-3.6 3-3.6"/></svg>';
                     textEs = 'Próxima apertura hoy a las ' + state.startTimeStr + ' (hasta ' + state.endTimeStr + ')';
