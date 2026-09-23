@@ -345,6 +345,119 @@ body.light-mode #virtual-order-trigger.pulse-cta,
   animation: ctaPulseRing 14s infinite ease-in-out 9s !important;
 }
 
+    /* Optimización de espacio vertical en dispositivos móviles en modo horizontal (Landscape) */
+    @media screen and (orientation: landscape) and (max-height: 500px) {
+      .drawer-description {
+        display: none !important;
+      }
+      .drawer-footer-box {
+        display: none !important;
+      }
+      .drawer-header {
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+      }
+
+      /* Compactación de tarjetas y filas en el modal de Accesibilidad Visual */
+      #accessibility-sidebar-container .flex-1.overflow-y-auto > div,
+      #accessibility-sidebar-container .flex-1.overflow-y-auto button {
+        padding-top: 6px !important;    /* py-1.5 is 6px */
+        padding-bottom: 6px !important;
+        padding-left: 12px !important;   /* px-3 is 12px */
+        padding-right: 12px !important;
+        border-radius: 12px !important;  /* Tarjetas un poco más ceñidas */
+      }
+
+      /* Reducción de gaps de separación interna */
+      #accessibility-sidebar-container .flex-1.overflow-y-auto button span.flex.items-center {
+        gap: 10px !important;           /* gap-2.5 is 10px */
+      }
+
+      /* Ajustes de tipografía compacta para títulos y traducciones */
+      #accessibility-sidebar-container .flex-1.overflow-y-auto .text-white.font-bold {
+        line-height: 1.15 !important;
+        font-size: 11.5px !important;
+      }
+      #accessibility-sidebar-container .flex-1.overflow-y-auto .text-gold-themed {
+        margin-top: 1px !important;
+        line-height: 1.1 !important;
+        font-size: 9.5px !important;
+      }
+
+      /* Reducción de espaciados en la tarjeta del slider de tamaño de fuente */
+      #accessibility-sidebar-container .flex-1.overflow-y-auto > div > .flex.justify-between.items-center {
+        margin-bottom: 6px !important;
+      }
+      #accessibility-sidebar-container .flex-1.overflow-y-auto > div > .flex.justify-between.text-[9px] {
+        margin-top: 3px !important;
+      }
+
+      /* Compactación del buscador y cabecera del Filtro de Alérgenos */
+      #allergen-sidebar-search-container {
+        padding: 8px 12px !important;
+      }
+      #sidebar-search-input {
+        padding-top: 7px !important;
+        padding-bottom: 7px !important;
+        padding-left: 32px !important;
+        border-radius: 10px !important;
+        font-size: 11.5px !important;
+      }
+      #sidebar-search-input + svg,
+      #allergen-sidebar-search-container svg {
+        width: 14px !important;
+        height: 14px !important;
+        left: 10px !important;
+      }
+      #sidebar-active-counter-bar {
+        margin-top: 6px !important;
+        padding-top: 4px !important;
+      }
+
+      /* Compactación de las filas de alérgenos individuales */
+      #allergen-sidebar-list button {
+        padding-top: 6px !important;    /* py-1.5 is 6px */
+        padding-bottom: 6px !important;
+        padding-left: 12px !important;   /* px-3 is 12px */
+        padding-right: 12px !important;
+        gap: 10px !important;            /* gap-2.5 is 10px */
+        border-radius: 12px !important;  /* Esquinas más ceñidas */
+      }
+
+      /* Reducción de separación vertical entre tarjetas de alérgenos */
+      #allergen-sidebar-list > * + * {
+        margin-top: 6px !important;
+      }
+
+      /* Compactación del círculo con el icono del alérgeno */
+      #allergen-sidebar-list button > span:first-child {
+        width: 32px !important;
+        height: 32px !important;
+        padding: 5px !important;
+      }
+
+      /* Textos del alérgeno más compactos y fluidos */
+      #allergen-sidebar-list button span.text-white.font-bold {
+        line-height: 1.15 !important;
+        font-size: 11px !important;
+      }
+      #allergen-sidebar-list button span.text-paragraph-themed {
+        margin-top: 1px !important;
+        line-height: 1.1 !important;
+        font-size: 8px !important;
+      }
+
+      /* Compactación de la insignia (Badge) MOSTRAR / OCULTAR */
+      #allergen-sidebar-list button span.flex-shrink-0 > span {
+        padding-top: 3px !important;
+        padding-bottom: 3px !important;
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        font-size: 7.5px !important;
+        border-radius: 6px !important;
+      }
+    }
+
     :root {
       --client-font: 'Poppins', serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
