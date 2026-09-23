@@ -298,8 +298,11 @@
       0% {
         box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.75), 0 4px 15px rgba(0, 0, 0, 0.4);
       }
-      10% {
+      2% {
         box-shadow: 0 0 0 15px rgba(212, 175, 55, 0), 0 4px 15px rgba(0, 0, 0, 0.4);
+      }
+      14.28% { /* 2 segundos exactos dentro del ciclo de 14s */
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0), 0 4px 15px rgba(0, 0, 0, 0.4);
       }
       100% {
         box-shadow: 0 0 0 0 rgba(212, 175, 55, 0), 0 4px 15px rgba(0, 0, 0, 0.4);
@@ -307,8 +310,22 @@
     }
 
     .pulse-cta {
-      animation: ctaPulseRing 20s infinite ease-in-out !important;
+      animation: ctaPulseRing 14s infinite ease-in-out !important;
       will-change: box-shadow;
+    }
+
+    /* Staggered delay for bottom drawer buttons using nth-child */
+    .pulse-cta:nth-of-type(1) {
+      animation-delay: 0s !important;
+    }
+    .pulse-cta:nth-of-type(2) {
+      animation-delay: 3s !important;
+    }
+    .pulse-cta:nth-of-type(3) {
+      animation-delay: 6s !important;
+    }
+    .pulse-cta:nth-of-type(4) {
+      animation-delay: 9s !important;
     }
 
     :root {
@@ -3344,7 +3361,6 @@
           id="theme-toggle-btn" 
           onclick="toggleDayNightTheme()" 
           class="floating-fab-btn relative rounded-full aspect-square p-0 flex items-center justify-center shrink-0 cursor-pointer backdrop-blur-md focus-visible:outline-none pulse-cta"
-          style="animation-delay: 0s;"
           title="Cambiar a Modo Día (Claro) / Switch to Light Mode"
           aria-label="Modo Día (Claro) / Light Mode"
         >
@@ -3372,7 +3388,6 @@
           id="allergen-filter-trigger"
           onclick="toggleAllergenModal(true)" 
           class="floating-fab-btn relative rounded-full aspect-square p-0 flex items-center justify-center shrink-0 cursor-pointer backdrop-blur-md focus-visible:outline-none pulse-cta"
-          style="animation-delay: 4s;"
           title="Filtro de Alérgenos / Allergen Filter"
           aria-label="Filtro de Alérgenos / Allergen Filter"
         >
@@ -3388,7 +3403,6 @@
           id="accessibility-trigger"
           onclick="toggleAccessibilityModal(true)" 
           class="floating-fab-btn relative rounded-full aspect-square p-0 flex items-center justify-center shrink-0 cursor-pointer backdrop-blur-md focus-visible:outline-none pulse-cta"
-          style="animation-delay: 8s;"
           title="Accesibilidad Visual / Visual Accessibility"
           aria-label="Accesibilidad Visual / Visual Accessibility"
         >
@@ -3404,7 +3418,6 @@
           id="virtual-order-trigger"
           onclick="toggleVirtualOrderModal(true)" 
           class="floating-fab-btn relative rounded-full aspect-square p-0 flex items-center justify-center shrink-0 cursor-pointer backdrop-blur-md focus-visible:outline-none pulse-cta"
-          style="animation-delay: 12s;"
           title="Mi Comanda Virtual / My Virtual Order"
           aria-label="Mi Comanda Virtual / My Virtual Order"
         >
