@@ -4813,14 +4813,21 @@ body.light-mode #virtual-order-trigger.pulse-cta,
         /* --- OPENING HOURS / SCHEDULE STATUS UTILITY --- */
         function checkScheduleStatusStandalone(cfg) {
           if (!cfg || !cfg.enabled) {
-            return { isOpen: true, isLastCall: false, remainingMinutes: 0, textEs: 'Abierto', textEn: 'Open', badgeColorClass: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' };
+            return {
+              isOpen: true,
+              isVacation: false,
+              textEs: 'Abierto',
+              textEn: 'Open',
+              badgeColorClass: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+            };
           }
 
           const now = new Date();
           const rawBrandName = (typeof DATA !== 'undefined' && DATA.clientConfig && DATA.clientConfig.brandName) ? DATA.clientConfig.brandName : '';
           const clientNameEs = rawBrandName && rawBrandName.trim() ? rawBrandName.trim() : 'El establecimiento';
           const clientNameEn = rawBrandName && rawBrandName.trim() ? rawBrandName.trim() : 'The establishment';
-          
+
+          // Check Vacation
           if (cfg.vacation && cfg.vacation.active) {
             const todayStr = now.toISOString().split('T')[0];
             const start = cfg.vacation.startDate;
@@ -4830,8 +4837,6 @@ body.light-mode #virtual-order-trigger.pulse-cta,
               return {
                 isOpen: false,
                 isVacation: true,
-                isLastCall: false,
-                remainingMinutes: 0,
                 textEs: cfg.vacation.messageEs || 'Cerrado por vacaciones',
                 textEn: cfg.vacation.messageEn || 'Closed for holidays',
                 badgeColorClass: 'bg-amber-500/10 border-amber-500/30 text-amber-400'
@@ -4839,7 +4844,7 @@ body.light-mode #virtual-order-trigger.pulse-cta,
             }
           }
 
-          const currentDay = now.getDay();
+          const currentDay = now.getDay(); // 0-6
           const currentMinutes = now.getHours() * 60 + now.getMinutes();
           const lastCallThreshold = cfg.lastCallMinutes || 30;
 
@@ -4849,206 +4854,301 @@ body.light-mode #virtual-order-trigger.pulse-cta,
             return (h || 0) * 60 + (m || 0);
           }
 
-          function testShift(openStr, closeStr) {
-            if (!openStr || !closeStr) return { isOpen: false, remainingMins: 0 };
-            const openM = timeToMin(openStr);
-            const closeM = timeToMin(closeStr);
+          function isGlobalShiftActive(startTime, endTime, days) {
+            const startM = timeToMin(startTime);
+            const endM = timeToMin(endTime);
+            const shiftDays = days || [1, 2, 3, 4, 5, 6, 0];
 
-            if (openM <= closeM) {
-              if (currentMinutes >= openM && currentMinutes < closeM) {
-                return { isOpen: true, remainingMins: closeM - currentMinutes, openM, closeM };
+            if (startM <= endM) {
+              if (shiftDays.includes(currentDay)) {
+                return currentMinutes >= startM && currentMinutes < endM;
               }
-            } else {
-              // Cruce de medianoche (ej: 23:00 - 02:00)
-              // Solo activo en la fecha de inicio si ya superó la hora de apertura.
-              // La madrugada (ej. 00:00 a 02:00) es controlada por el chequeo de la jornada de ayer.
-              if (currentMinutes >= openM) {
-                return { isOpen: true, remainingMins: (24 * 60 - currentMinutes) + closeM, openM, closeM };
-              }
+              return false;
             }
-            return { isOpen: false, remainingMins: 0 };
+
+            if (shiftDays.includes(currentDay) && currentMinutes >= startM) {
+              return true;
+            }
+            const prevDay = (currentDay + 6) % 7;
+            if (shiftDays.includes(prevDay) && currentMinutes < endM) {
+              return true;
+            }
+
+            return false;
           }
 
-          function formatLastCallResult(isFinalClosing, remainingMins, closeStr, shiftLabelEs, shiftLabelEn) {
+          function getGlobalShiftRemaining(startTime, endTime) {
+            const startM = timeToMin(startTime);
+            const endM = timeToMin(endTime);
+
+            if (startM <= endM) {
+              return endM - currentMinutes;
+            } else {
+              if (currentMinutes >= startM) {
+                return (1440 - currentMinutes) + endM;
+              } else {
+                return endM - currentMinutes;
+              }
+            }
+          }
+
+          // Helper to generate formatted Last Call message
+          function formatLastCall(isFinalClosing, remaining, closeStr, shiftLabelEs, shiftLabelEn) {
             if (isFinalClosing) {
               return {
                 isOpen: true,
+                isVacation: false,
                 isLastCall: true,
                 isFinalClosing: true,
-                remainingMinutes: remainingMins,
-                textEs: clientNameEs + ' cierra en ' + remainingMins + ' min (a las ' + closeStr + ')',
-                textEn: clientNameEn + ' closes in ' + remainingMins + ' min (at ' + closeStr + ')',
+                remainingMinutes: remaining,
+                textEs: clientNameEs + ' cierra en ' + remaining + ' min (a las ' + closeStr + ')',
+                textEn: clientNameEn + ' closes in ' + remaining + ' min (at ' + closeStr + ')',
                 badgeColorClass: 'bg-red-500/15 border-red-500/50 text-red-900 dark:text-red-300 animate-pulse'
               };
             } else {
-              const sEs = shiftLabelEs || 'este turno';
-              const sEn = shiftLabelEn || 'Current';
+              const sNameEs = shiftLabelEs || 'este turno';
+              const sNameEn = shiftLabelEn || 'Current';
               return {
                 isOpen: true,
+                isVacation: false,
                 isLastCall: true,
                 isFinalClosing: false,
-                remainingMinutes: remainingMins,
-                textEs: 'El turno de ' + sEs + ' finaliza en ' + remainingMins + ' min (a las ' + closeStr + ')',
-                textEn: sEn + ' shift ends in ' + remainingMins + ' min (at ' + closeStr + ')',
+                remainingMinutes: remaining,
+                textEs: 'El turno de ' + sNameEs + ' finaliza en ' + remaining + ' min (a las ' + closeStr + ')',
+                textEn: sNameEn + ' shift ends in ' + remaining + ' min (at ' + closeStr + ')',
                 badgeColorClass: 'bg-amber-500/15 border-amber-500/50 text-amber-900 dark:text-amber-300 animate-pulse'
               };
             }
           }
 
-          // 1. Comprobar si ayer noche abrió un turno que cruza medianoche
-          const yesterday = (currentDay + 6) % 7;
-          const yesterdaySched = cfg.days && cfg.days[yesterday];
-          if (yesterdaySched && !yesterdaySched.closed) {
+          function testShift(openStr, closeStr) {
+            const openM = timeToMin(openStr);
+            const closeM = timeToMin(closeStr);
+
+            if (openM <= closeM) {
+              if (currentMinutes >= openM && currentMinutes < closeM) {
+                const remaining = closeM - currentMinutes;
+                return { active: true, remaining: remaining, openStr: openStr, closeStr: closeStr, openM: openM, closeM: closeM };
+              }
+            } else {
+              if (currentMinutes >= openM) {
+                const remaining = (1440 - currentMinutes) + closeM;
+                return { active: true, remaining: remaining, openStr: openStr, closeStr: closeStr, openM: openM, closeM: closeM };
+              }
+            }
+            return null;
+          }
+
+          let activeOpShift = null;
+
+          // 1. Check yesterday's crossing midnight shifts
+          const prevDay = (currentDay + 6) % 7;
+          const prevDaySched = cfg.days && cfg.days[prevDay];
+          if (prevDaySched && !prevDaySched.closed) {
             const shiftsToCheck = [
-              { shift: yesterdaySched.shift1, labelEs: 'Almuerzos/Comidas', labelEn: 'Lunch' },
-              { shift: yesterdaySched.shift2, labelEs: 'Cenas y Noche', labelEn: 'Dinner & Night' }
+              { shift: prevDaySched.shift1, num: 1 },
+              { shift: prevDaySched.shift2, num: 2 }
             ];
             for (const item of shiftsToCheck) {
               const s = item.shift;
               if (s && s.enabled) {
-                const openVal = timeToMin(s.open);
-                const closeVal = timeToMin(s.close);
-                if (openVal > closeVal && currentMinutes < closeVal) {
-                  const rem = closeVal - currentMinutes;
-                  const isLastCall = rem <= lastCallThreshold && rem > 0;
-                  if (isLastCall) {
-                    return formatLastCallResult(true, rem, s.close, item.labelEs, item.labelEn);
-                  }
-                  return {
-                    isOpen: true,
-                    isLastCall: false,
-                    remainingMinutes: rem,
-                    textEs: 'Ahora en servicio (' + item.labelEs + ' · hasta las ' + s.close + ')',
-                    textEn: 'Now serving (' + item.labelEn + ' · until ' + s.close + ')',
-                    badgeColorClass: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+                const openM = timeToMin(s.open);
+                const closeM = timeToMin(s.close);
+                if (openM > closeM && currentMinutes < closeM) {
+                  activeOpShift = {
+                    open: s.open,
+                    close: s.close,
+                    isYesterday: true,
+                    remaining: closeM - currentMinutes,
+                    shiftNum: item.num
                   };
+                  break;
                 }
               }
             }
           }
 
-          // 2. Comprobar horario semanal por días (El horario semanal tiene precedencia sobre los turnos globales)
-          const daySchedule = cfg.days && cfg.days[currentDay];
-          if (daySchedule && !daySchedule.closed) {
-            if (daySchedule.shift1 && daySchedule.shift1.enabled) {
-              const res1 = testShift(daySchedule.shift1.open, daySchedule.shift1.close);
-              if (res1.isOpen) {
-                const isLastCall = res1.remainingMins <= lastCallThreshold && res1.remainingMins > 0;
-                if (isLastCall) {
-                  const hasShift2 = !!(daySchedule.shift2 && daySchedule.shift2.enabled);
-                  return formatLastCallResult(!hasShift2, res1.remainingMins, daySchedule.shift1.close, 'Comidas', 'Lunch');
-                }
-
-                // Sincronizar etiqueta de sub-período global activo
-                let textEs = 'Ahora en servicio (' + daySchedule.shift1.open + ' - ' + daySchedule.shift1.close + ')';
-                let textEn = 'Now serving (' + daySchedule.shift1.open + ' - ' + daySchedule.shift1.close + ')';
-                if (cfg.globalShifts) {
-                  const matchingGlobalShifts = Object.values(cfg.globalShifts)
-                    .filter(function(s) { return s && s.enabled && (s.days || [1, 2, 3, 4, 5, 6, 0]).includes(currentDay); })
-                    .map(function(shift) { return { shift: shift, test: testShift(shift.startTime, shift.endTime) }; })
-                    .filter(function(item) { return item.test && item.test.isOpen; });
-
-                  if (matchingGlobalShifts.length > 0) {
-                    matchingGlobalShifts.sort(function(a, b) { return timeToMin(a.shift.endTime) - timeToMin(b.shift.endTime); });
-                    const subPeriodsEs = matchingGlobalShifts.map(function(item) {
-                      return item.shift.labelEs + ' (' + item.shift.startTime + ' - ' + item.shift.endTime + ')';
-                    });
-                    const subPeriodsEn = matchingGlobalShifts.map(function(item) {
-                      return item.shift.labelEn + ' (' + item.shift.startTime + ' - ' + item.shift.endTime + ')';
-                    });
-                    textEs = 'Ahora en servicio · ' + subPeriodsEs.join(' y ');
-                    textEn = 'Now serving · ' + subPeriodsEn.join(' & ');
-                  }
-                }
-
-                return {
-                  isOpen: true,
-                  isLastCall: false,
-                  remainingMinutes: res1.remainingMins,
-                  textEs: textEs,
-                  textEn: textEn,
-                  badgeColorClass: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+          // 2. Check today's standard shifts
+          const daySched = cfg.days && cfg.days[currentDay];
+          if (!activeOpShift && daySched && !daySched.closed) {
+            if (daySched.shift1 && daySched.shift1.enabled) {
+              const res = testShift(daySched.shift1.open, daySched.shift1.close);
+              if (res && res.active) {
+                activeOpShift = {
+                  open: daySched.shift1.open,
+                  close: daySched.shift1.close,
+                  isYesterday: false,
+                  remaining: res.remaining,
+                  shiftNum: 1
                 };
               }
             }
-
-            if (daySchedule.shift2 && daySchedule.shift2.enabled) {
-              const res2 = testShift(daySchedule.shift2.open, daySchedule.shift2.close);
-              if (res2.isOpen) {
-                const isLastCall = res2.remainingMins <= lastCallThreshold && res2.remainingMins > 0;
-                if (isLastCall) {
-                  return formatLastCallResult(true, res2.remainingMins, daySchedule.shift2.close, 'Cenas y Noche', 'Dinner');
-                }
-
-                // Sincronizar etiqueta de sub-período global activo
-                let textEs = 'Ahora en servicio (' + daySchedule.shift2.open + ' - ' + daySchedule.shift2.close + ')';
-                let textEn = 'Now serving (' + daySchedule.shift2.open + ' - ' + daySchedule.shift2.close + ')';
-                if (cfg.globalShifts) {
-                  const matchingGlobalShifts = Object.values(cfg.globalShifts)
-                    .filter(function(s) { return s && s.enabled && (s.days || [1, 2, 3, 4, 5, 6, 0]).includes(currentDay); })
-                    .map(function(shift) { return { shift: shift, test: testShift(shift.startTime, shift.endTime) }; })
-                    .filter(function(item) { return item.test && item.test.isOpen; });
-
-                  if (matchingGlobalShifts.length > 0) {
-                    matchingGlobalShifts.sort(function(a, b) { return timeToMin(a.shift.endTime) - timeToMin(b.shift.endTime); });
-                    const subPeriodsEs = matchingGlobalShifts.map(function(item) {
-                      return item.shift.labelEs + ' (' + item.shift.startTime + ' - ' + item.shift.endTime + ')';
-                    });
-                    const subPeriodsEn = matchingGlobalShifts.map(function(item) {
-                      return item.shift.labelEn + ' (' + item.shift.startTime + ' - ' + item.shift.endTime + ')';
-                    });
-                    textEs = 'Ahora en servicio · ' + subPeriodsEs.join(' y ');
-                    textEn = 'Now serving · ' + subPeriodsEn.join(' & ');
-                  }
-                }
-
-                return {
-                  isOpen: true,
-                  isLastCall: false,
-                  remainingMinutes: res2.remainingMins,
-                  textEs: textEs,
-                  textEn: textEn,
-                  badgeColorClass: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+            if (!activeOpShift && daySched.shift2 && daySched.shift2.enabled) {
+              const res = testShift(daySched.shift2.open, daySched.shift2.close);
+              if (res && res.active) {
+                activeOpShift = {
+                  open: daySched.shift2.open,
+                  close: daySched.shift2.close,
+                  isYesterday: false,
+                  remaining: res.remaining,
+                  shiftNum: 2
                 };
               }
             }
           }
 
-          // 3. Comprobar turnos globales si están activos
+          if (activeOpShift) {
+            // Check subsequent shift
+            let hasSubsequentShift = false;
+            if (activeOpShift.isYesterday) {
+              if (daySched && !daySched.closed && daySched.shift1 && daySched.shift1.enabled) {
+                const todayOpenM = timeToMin(daySched.shift1.open);
+                const activeCloseM = timeToMin(activeOpShift.close);
+                if (todayOpenM <= activeCloseM + 5) {
+                  hasSubsequentShift = true;
+                }
+              }
+            } else if (activeOpShift.shiftNum === 1) {
+              if (daySched && daySched.shift2 && daySched.shift2.enabled) {
+                const shift2OpenM = timeToMin(daySched.shift2.open);
+                const activeCloseM = timeToMin(activeOpShift.close);
+                if (shift2OpenM <= activeCloseM + 5) {
+                  hasSubsequentShift = true;
+                }
+              }
+            } else {
+              const tomorrowDay = (currentDay + 1) % 7;
+              const tomorrowSched = cfg.days && cfg.days[tomorrowDay];
+              if (tomorrowSched && !tomorrowSched.closed && tomorrowSched.shift1 && tomorrowSched.shift1.enabled) {
+                const tomorrowOpenM = timeToMin(tomorrowSched.shift1.open);
+                const activeCloseM = timeToMin(activeOpShift.close);
+                if (tomorrowOpenM <= activeCloseM + 5) {
+                  hasSubsequentShift = true;
+                }
+              }
+            }
+
+            // Last call condition
+            if (activeOpShift.remaining <= lastCallThreshold && activeOpShift.remaining > 0 && !hasSubsequentShift) {
+              const isFinalClosing = activeOpShift.isYesterday || activeOpShift.shiftNum === 2 || !daySched || !(daySched.shift2 && daySched.shift2.enabled);
+
+              let shiftLabelEs = activeOpShift.shiftNum === 1 ? 'Comidas' : 'Cenas y Noche';
+              let shiftLabelEn = activeOpShift.shiftNum === 1 ? 'Lunch' : 'Dinner';
+
+              if (cfg.globalShifts) {
+                const endingGlobalShifts = Object.values(cfg.globalShifts).filter(function(s) {
+                  return s && s.enabled && s.endTime === activeOpShift.close;
+                });
+                if (endingGlobalShifts.length > 0) {
+                  shiftLabelEs = endingGlobalShifts[0].labelEs;
+                  shiftLabelEn = endingGlobalShifts[0].labelEn;
+                }
+              }
+
+              return formatLastCall(isFinalClosing, activeOpShift.remaining, activeOpShift.close, shiftLabelEs, shiftLabelEn);
+            }
+
+            // Normal active state
+            let textEs = 'Ahora en servicio (' + activeOpShift.open + ' - ' + activeOpShift.close + ')';
+            let textEn = 'Now serving (' + activeOpShift.open + ' - ' + activeOpShift.close + ')';
+
+            if (cfg.globalShifts) {
+              const matchingGlobalShifts = Object.values(cfg.globalShifts)
+                .filter(function(s) { return s && s.enabled; })
+                .filter(function(s) {
+                  return isGlobalShiftActive(s.startTime, s.endTime, s.days);
+                });
+
+              if (matchingGlobalShifts.length > 0) {
+                matchingGlobalShifts.sort(function(a, b) { return timeToMin(a.endTime) - timeToMin(b.endTime); });
+                const subPeriodsEs = matchingGlobalShifts.map(function(s) {
+                  return s.labelEs + ' (' + s.startTime + ' - ' + s.endTime + ')';
+                });
+                const subPeriodsEn = matchingGlobalShifts.map(function(s) {
+                  return s.labelEn + ' (' + s.startTime + ' - ' + s.endTime + ')';
+                });
+                textEs = 'Ahora en servicio · ' + subPeriodsEs.join(' y ');
+                textEn = 'Now serving · ' + subPeriodsEn.join(' & ');
+              }
+            }
+
+            return {
+              isOpen: true,
+              isVacation: false,
+              textEs: textEs,
+              textEn: textEn,
+              badgeColorClass: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+            };
+          }
+
+          // 3. Fallback to global shifts directly
           if (cfg.globalShifts) {
-            const activeGlobalShifts = Object.values(cfg.globalShifts).filter(function(s) { return s && s.enabled; });
-            for (const shift of activeGlobalShifts) {
-              const days = shift.days && Array.isArray(shift.days) && shift.days.length > 0 ? shift.days : [1, 2, 3, 4, 5, 6, 0];
-              if (days.includes(currentDay)) {
-                const res = testShift(shift.startTime, shift.endTime);
-                if (res.isOpen) {
-                  const isLastCall = res.remainingMins <= lastCallThreshold && res.remainingMins > 0;
-                  if (isLastCall) {
-                    const hasLaterShiftToday = activeGlobalShifts.some(function(other) {
-                      if (other.id === shift.id) return false;
-                      const otherDays = other.days && Array.isArray(other.days) && other.days.length > 0 ? other.days : [1, 2, 3, 4, 5, 6, 0];
-                      if (!otherDays.includes(currentDay)) return false;
-                      const otherOpenM = timeToMin(other.startTime);
-                      const thisCloseM = timeToMin(shift.endTime);
-                      return otherOpenM >= thisCloseM || (otherOpenM > timeToMin(shift.startTime) && otherOpenM > currentMinutes);
-                    });
+            const activeGlobalShifts = Object.values(cfg.globalShifts)
+              .filter(function(s) { return s && s.enabled; })
+              .filter(function(s) {
+                return isGlobalShiftActive(s.startTime, s.endTime, s.days);
+              });
 
-                    return formatLastCallResult(!hasLaterShiftToday, res.remainingMins, shift.endTime, shift.labelEs, shift.labelEn);
-                  }
-                  return {
-                    isOpen: true,
-                    isLastCall: false,
-                    remainingMinutes: res.remainingMins,
-                    textEs: 'Ahora en servicio · ' + shift.labelEs + ' (' + shift.startTime + ' - ' + shift.endTime + ')',
-                    textEn: 'Now serving · ' + shift.labelEn + ' (' + shift.startTime + ' - ' + shift.endTime + ')',
-                    badgeColorClass: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
-                  };
-                }
+            if (activeGlobalShifts.length > 0) {
+              activeGlobalShifts.sort(function(a, b) { return timeToMin(a.endTime) - timeToMin(b.endTime); });
+              const primaryShift = activeGlobalShifts[0];
+              const remaining = getGlobalShiftRemaining(primaryShift.startTime, primaryShift.endTime);
+
+              if (remaining <= lastCallThreshold && remaining > 0) {
+                const otherGlobalShifts = Object.values(cfg.globalShifts).filter(function(s) {
+                  return s && s.enabled && s.id !== primaryShift.id;
+                });
+                const hasLaterShiftToday = otherGlobalShifts.some(function(other) {
+                  const otherDays = other.days || [1, 2, 3, 4, 5, 6, 0];
+                  if (!otherDays.includes(currentDay)) return false;
+                  const otherOpenM = timeToMin(other.startTime);
+                  return otherOpenM > currentMinutes;
+                });
+
+                return formatLastCall(!hasLaterShiftToday, remaining, primaryShift.endTime, primaryShift.labelEs, primaryShift.labelEn);
               }
+
+              const subPeriodsEs = activeGlobalShifts.map(function(s) {
+                return s.labelEs + ' (' + s.startTime + ' - ' + s.endTime + ')';
+              });
+              const subPeriodsEn = activeGlobalShifts.map(function(s) {
+                return s.labelEn + ' (' + s.startTime + ' - ' + s.endTime + ')';
+              });
+
+              return {
+                isOpen: true,
+                isVacation: false,
+                textEs: 'Ahora en servicio · ' + subPeriodsEs.join(' y '),
+                textEn: 'Now serving · ' + subPeriodsEn.join(' & '),
+                badgeColorClass: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
+              };
             }
           }
 
-          // No Abierto ahora -> buscar próxima apertura
+          // Helper to build warm personalized closed status
+          const buildClosedStatus = function(openTime, dayEs, dayEn) {
+            let reopenEs = '';
+            let reopenEn = '';
+            if (openTime) {
+              const whenEs = (dayEs && dayEs !== 'hoy') ? ' ' + dayEs + ' a partir de las ' + openTime : ' a partir de las ' + openTime;
+              const whenEn = (dayEn && dayEn !== 'today') ? ' ' + dayEn + ' from ' + openTime : ' from ' + openTime;
+              reopenEs = ' Estaremos encantados de atenderte' + whenEs + '.';
+              reopenEn = ' We will be delighted to serve you' + whenEn + '.';
+            }
+
+            return {
+              isOpen: false,
+              isVacation: false,
+              nextOpeningTime: openTime || null,
+              nextOpeningDayEs: dayEs || '',
+              nextOpeningDayEn: dayEn || '',
+              textEs: clientNameEs + ' se encuentra actualmente cerrado. Te mostramos la carta completa para que puedas descubrir nuestra oferta.' + reopenEs,
+              textEn: clientNameEn + ' is currently closed. We are showing you our full menu so you can discover our selection.' + reopenEn,
+              badgeColorClass: 'bg-rose-500/15 border-red-500/40 text-red-300'
+            };
+          };
+
+          // Not open right now -> find next opening shift
           const DAY_NAMES_ES = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
           const DAY_NAMES_EN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -5063,17 +5163,7 @@ body.light-mode #virtual-order-trigger.pulse-cta,
               if (dayOffset > 0 || currentMinutes < openM) {
                 const dayLabelEs = dayOffset === 0 ? 'hoy' : dayOffset === 1 ? 'mañana' : 'el ' + DAY_NAMES_ES[checkDay];
                 const dayLabelEn = dayOffset === 0 ? 'today' : dayOffset === 1 ? 'tomorrow' : 'on ' + DAY_NAMES_EN[checkDay];
-                return {
-                  isOpen: false,
-                  isLastCall: false,
-                  remainingMinutes: 0,
-                  nextOpeningTime: sched.shift1.open,
-                  nextOpeningDayEs: dayLabelEs,
-                  nextOpeningDayEn: dayLabelEn,
-                  textEs: 'Cerrado · Abrimos ' + dayLabelEs + ' a las ' + sched.shift1.open,
-                  textEn: 'Closed · Opens ' + dayLabelEn + ' at ' + sched.shift1.open,
-                  badgeColorClass: 'bg-red-500/10 border-red-500/30 text-red-400'
-                };
+                return buildClosedStatus(sched.shift1.open, dayLabelEs, dayLabelEn);
               }
             }
 
@@ -5083,32 +5173,12 @@ body.light-mode #virtual-order-trigger.pulse-cta,
               if (dayOffset > 0 || currentMinutes < openM) {
                 const dayLabelEs = dayOffset === 0 ? 'hoy' : dayOffset === 1 ? 'mañana' : 'el ' + DAY_NAMES_ES[checkDay];
                 const dayLabelEn = dayOffset === 0 ? 'today' : dayOffset === 1 ? 'tomorrow' : 'on ' + DAY_NAMES_EN[checkDay];
-                return {
-                  isOpen: false,
-                  isLastCall: false,
-                  remainingMinutes: 0,
-                  nextOpeningTime: sched.shift2.open,
-                  nextOpeningDayEs: dayLabelEs,
-                  nextOpeningDayEn: dayLabelEn,
-                  textEs: 'Cerrado · Abrimos ' + dayLabelEs + ' a las ' + sched.shift2.open,
-                  textEn: 'Closed · Opens ' + dayLabelEn + ' at ' + sched.shift2.open,
-                  badgeColorClass: 'bg-red-500/10 border-red-500/30 text-red-400'
-                };
+                return buildClosedStatus(sched.shift2.open, dayLabelEs, dayLabelEn);
               }
             }
           }
 
-          return {
-            isOpen: false,
-            isLastCall: false,
-            remainingMinutes: 0,
-            nextOpeningTime: null,
-            nextOpeningDayEs: '',
-            nextOpeningDayEn: '',
-            textEs: 'Establecimiento Cerrado',
-            textEn: 'Establishment Closed',
-            badgeColorClass: 'bg-red-500/10 border-red-500/30 text-red-400'
-          };
+          return buildClosedStatus();
         }
 
         const getCategoryLabels = (cat) => {
