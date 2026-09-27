@@ -8413,24 +8413,8 @@ body.light-mode #virtual-order-trigger.pulse-cta,
             }
           } else {
             // Establecimiento Cerrado: Mensaje personalizado cálido bilingüe
-            const timeStr = status.nextOpeningTime || '';
-            const dayEs = status.nextOpeningDayEs || '';
-            const dayEn = status.nextOpeningDayEn || '';
-
-            let reopenEs = '';
-            let reopenEn = '';
-            if (timeStr) {
-              const whenEs = (dayEs && dayEs !== 'hoy') ? (' ' + dayEs + ' a partir de las ' + timeStr) : (' a partir de las ' + timeStr);
-              const whenEn = (dayEn && dayEn !== 'today') ? (' ' + dayEn + ' from ' + timeStr) : (' from ' + timeStr);
-              reopenEs = ' Estaremos encantados de atenderte' + whenEs + '.';
-              reopenEn = ' We will be delighted to serve you' + whenEn + '.';
-            }
-
-            const customEs = clientName + ' se encuentra actualmente cerrado. Te mostramos la carta completa para que puedas descubrir nuestra oferta.' + reopenEs;
-            const customEn = clientName + ' is currently closed. We are showing you our full menu so you can discover our selection.' + reopenEn;
-
-            if (textEs) textEs.textContent = customEs;
-            if (textEn) textEn.textContent = customEn;
+            if (textEs) textEs.textContent = status.textEs;
+            if (textEn) textEn.textContent = status.textEn || '';
 
             banner.className = 'mb-6 p-4 px-5 rounded-2xl border flex items-center justify-center gap-3.5 transition-all mt-6 shadow-lg select-none leading-relaxed text-center';
             banner.classList.remove('animate-pulse');
