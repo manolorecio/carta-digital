@@ -4847,6 +4847,10 @@ body.light-mode #virtual-order-trigger.pulse-cta,
           const currentDay = now.getDay(); // 0-6
           const currentMinutes = now.getHours() * 60 + now.getMinutes();
           const lastCallThreshold = cfg.lastCallMinutes || 30;
+          const DAY_NAMES_ES = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+          const DAY_NAMES_EN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+          const currentDayEsCap = DAY_NAMES_ES[currentDay] || '';
+          const currentDayEnCap = DAY_NAMES_EN[currentDay] || '';
 
           function timeToMin(t) {
             if (!t) return 0;
@@ -5142,15 +5146,13 @@ body.light-mode #virtual-order-trigger.pulse-cta,
               nextOpeningTime: openTime || null,
               nextOpeningDayEs: dayEs || '',
               nextOpeningDayEn: dayEn || '',
-              textEs: clientNameEs + ' se encuentra actualmente cerrado. Te mostramos la carta completa para que puedas descubrir nuestra oferta.' + reopenEs,
-              textEn: clientNameEn + ' is currently closed. We are showing you our full menu so you can discover our selection.' + reopenEn,
+              textEs: 'Hoy ' + currentDayEsCap + ', ' + clientNameEs + ' se encuentra actualmente cerrado. Te mostramos la carta completa para que puedas descubrir nuestra oferta.' + reopenEs,
+              textEn: 'Today ' + currentDayEnCap + ', ' + clientNameEn + ' is currently closed. We are showing you our full menu so you can discover our selection.' + reopenEn,
               badgeColorClass: 'bg-rose-500/15 border-red-500/40 text-red-300'
             };
           };
 
           // Not open right now -> find next opening shift
-          const DAY_NAMES_ES = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-          const DAY_NAMES_EN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
           for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
             const checkDay = (currentDay + dayOffset) % 7;
