@@ -2,7 +2,7 @@
 
 Edita platos, precios y alérgenos desde tu ordenador, marca un plato como agotado en segundos y publica una carta bilingüe que carga al instante desde un código QR. **Pago único, sin comisiones y sin depender de ninguna plataforma.**
 
-👉 **[Ver la carta de demostración](https://manolorecio.github.io/carta-digital/)** &nbsp;|&nbsp; 💬 **[Escríbeme por WhatsApp](https://wa.me/34633555950)**
+👉 **[Ver la carta de demostración](https://github.io)** &nbsp;|&nbsp; 💬 **[Escríbeme por WhatsApp](https://wa.me)**
 
 ---
 
@@ -23,7 +23,7 @@ Edita platos, precios y alérgenos desde tu ordenador, marca un plato como agota
 * 🔴 **Plato agotado en segundos:** Cambia el estado a `AGOTADO`, vuelve a publicar y tus clientes lo ven al momento, sin esperar a nadie.
 * 🕒 **Horarios que se explican solos:** La carta sabe si estás abierto, en qué turno estás y si hay vacaciones o un cierre temporal, comunicándolo en español e inglés.
 * ⚠️ **Alérgenos con ayuda y control tuyo:** Un asistente sugiere alérgenos al leer la descripción del plato y tú validas siempre el resultado. El filtro ayuda a tus clientes a decidir con seguridad; la información final es responsabilidad del establecimiento.
-* ♿ **Accesible para más comensales:** Tamaño de texto ajustable, alto contraste, escala de grises, guía de lectura, fuente para dislexia (Lexend) y lectura en voz alta de cada plato.
+* <img src="https://raw.githubusercontent.com/manolorecio/carta-digital/refs/heads/main/a11y.svg" width="18" height="18" align="absmiddle" alt="Accesibilidad"> **Accesible para más comensales:** Tamaño de texto ajustable, alto contraste, escala de grises, guía de lectura, fuente para dislexia (Lexend) y lectura en voz alta de cada plato.
 * 🌍 **Bilingüe de serie:** Nombres y descripciones en español e inglés, con ayuda para traducir y modo día o noche para terrazas y comedores oscuros.
 * 📱 **Comanda virtual:** Tus clientes preparan su pedido en el móvil y lo enseñan al camarero con letra grande y el total calculado. No sustituye el trato en sala: lo agiliza.
 
@@ -46,7 +46,7 @@ Edita platos, precios y alérgenos desde tu ordenador, marca un plato como agota
 
 **Training Tasca** es un establecimiento ficticio que he creado para mostrar el editor en acción: carta por turnos, menú del día, filtro de alérgenos, accesibilidad y comanda virtual. Todo lo que ves en la demostración se puede adaptar a tu local.
 
-📄 **[Ver el dossier interactivo completo (30 páginas)](https://manolorecio.github.io/dossier-carta-digital/)**
+📄 **[Ver el dossier interactivo completo (30 páginas)](https://github.io)**
 
 ---
 
@@ -56,8 +56,8 @@ Edita platos, precios y alérgenos desde tu ordenador, marca un plato como agota
 > **Prueba gratuita con tu marca**  
 > Cuéntame qué tipo de local tienes y te preparo una carta de muestra con tu logo y algunos de tus platos. **Pago único, sin mensualidades.**
 >
-> 💬 **[Escríbeme por WhatsApp](https://wa.me/34633555950)** &nbsp;|&nbsp; ✉️ **[Enviar un correo](mailto:manoloreciodesign@gmail.com?subject=Editor%20Portable%20de%20Carta%20Digital)**
+> 💬 **[Escríbeme por WhatsApp](https://wa.me)** &nbsp;|&nbsp; ✉️ **[Enviar un correo](mailto:manoloreciodesign@://gmail.com)**
 
 ---
 
-<sub>© 2026 Manolo Recio · Senior Graphic & Visual Designer, Scenic Developer y AI Creative Developer · <a href="https://manolorecio.github.io">Portfolio</a></sub>
+<sub>© 2026 Manolo Recio · Senior Graphic & Visual Designer, Scenic Developer y AI Creative Developer · <a href="https://github.io">Portfolio</a></sub>
