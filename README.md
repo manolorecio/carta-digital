@@ -23,7 +23,7 @@ Edita platos, precios y alérgenos desde tu ordenador, marca un plato como agota
 * 🔴 **Plato agotado en segundos:** Cambia el estado a `AGOTADO`, vuelve a publicar y tus clientes lo ven al momento, sin esperar a nadie.
 * 🕒 **Horarios que se explican solos:** La carta sabe si estás abierto, en qué turno estás y si hay vacaciones o un cierre temporal, comunicándolo en español e inglés.
 * ⚠️ **Alérgenos con ayuda y control tuyo:** Un asistente sugiere alérgenos al leer la descripción del plato y tú validas siempre el resultado. El filtro ayuda a tus clientes a decidir con seguridad; la información final es responsabilidad del establecimiento.
-* <img src="https://raw.githubusercontent.com/manolorecio/carta-digital/refs/heads/main/a11y.svg" width="18" height="18" align="absmiddle" alt="Accesibilidad"> **Accesible para más comensales:** Tamaño de texto ajustable, alto contraste, escala de grises, guía de lectura, fuente para dislexia (Lexend) y lectura en voz alta de cada plato.
+* <a href="#"><img src="./a11y.png" width="18" height="18" align="absmiddle" alt=""></a> **Accesible para más comensales:** Tamaño de texto ajustable, alto contraste, escala de grises, guía de lectura, fuente para dislexia (Lexend) y lectura en voz alta de cada plato.
 * 🌍 **Bilingüe de serie:** Nombres y descripciones en español e inglés, con ayuda para traducir y modo día o noche para terrazas y comedores oscuros.
 * 📱 **Comanda virtual:** Tus clientes preparan su pedido en el móvil y lo enseñan al camarero con letra grande y el total calculado. No sustituye el trato en sala: lo agiliza.
 
